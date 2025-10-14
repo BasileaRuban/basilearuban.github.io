@@ -6,7 +6,7 @@
     <title>Basilea Ruban - Digital Data and Reliability Engineer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind for custom soft light colors and font -->
+    <!-- Configure Tailwind for custom colors and font -->
     <script>
         tailwind.config = {
             theme: {
@@ -15,17 +15,19 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        // Custom soft light palette (Updated for more contrast/impact)
-                        'canvas-light': '#F8F9FA',  // Near white for main background
+                        // New Professional Data Palette: Deep Navy & Bright Teal
+                        'canvas-light': '#F8FAFC',  // Light Blue-Gray for main background
                         'surface': '#FFFFFF',       // Pure white for main cards
-                        'primary-soft': '#4F7C9E',  // Muted Steel Blue for key accents
-                        'primary-dark': '#1E293B',  // Deep Slate Gray for contrast/headers
-                        'accent-soft': '#E6EFFF',   // Very Pale Blue for subtle highlights
-                        'text-main': '#334155',     // Main text color (Deep Slate)
-                        'text-muted': '#64748B',    // Medium Slate Gray for secondary text
-                        'sidebar-bg': '#2C4960',    // Darker blue for the sidebar
-                        'sidebar-link': '#E6EFFF',  // Light text for sidebar links
-                        'sidebar-hover': '#4F7C9E', // Hover color matching primary
+                        'primary-dark': '#0F172A',  // Deep Navy for headers, contrast, and sidebar background
+                        'primary-accent': '#06B6D4', // Bright Teal/Cyan for key accents, links, and dividers
+                        'secondary-accent': '#ECFEFF', // Very Pale Cyan for subtle highlights/hover
+                        'text-main': '#1F2937',     // Dark Gray for main body text
+                        'text-muted': '#6B7280',    // Medium Gray for secondary text
+                        
+                        // Sidebar specific (mapped from new primary colors)
+                        'sidebar-bg': '#0F172A',    
+                        'sidebar-link': '#E2E8F0',  // Light Gray for link text
+                        'sidebar-hover': '#0E7490', // Darker Teal for hover state
                     }
                 }
             }
@@ -54,17 +56,17 @@
         #sidebar {
             width: 280px; /* Fixed width for desktop */
             flex-shrink: 0;
-            background-color: var(--tw-colors-sidebar-bg);
+            background-color: var(--tw-colors-sidebar-bg); /* Deep Navy */
             color: var(--tw-colors-sidebar-link);
             padding: 2.5rem 1.5rem;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.25); /* Darker shadow for depth */
             overflow-y: auto; /* Scroll sidebar if it gets too tall */
         }
         
         /* Main content area takes remaining space and is the scroll container */
         #main-content-view {
             flex-grow: 1;
-            padding: 1.5rem;
+            padding: 2rem;
             overflow-y: auto; /* Only this section scrolls for content overflow */
             -webkit-overflow-scrolling: touch;
         }
@@ -72,11 +74,11 @@
         /* Card Styles: Crisp and Clean */
         .card {
             background-color: var(--tw-colors-surface);
-            border-radius: 1.25rem;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-            border: 1px solid #E2E8F0;
+            border-radius: 1.5rem; /* Slightly more rounded */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E5E7EB;
             padding: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.25rem;
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         
@@ -84,7 +86,7 @@
         .nav-link {
             display: flex;
             align-items: center;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem; /* Adjusted padding */
             margin-bottom: 0.5rem;
             border-radius: 0.75rem;
             cursor: pointer;
@@ -93,14 +95,15 @@
             gap: 0.75rem;
         }
         .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--tw-colors-sidebar-hover); /* Darker Teal hover */
+            color: white; 
             transform: translateX(3px);
         }
         .nav-link.active {
-            background-color: var(--tw-colors-sidebar-hover);
+            background-color: var(--tw-colors-primary-accent); /* Bright Teal active */
             color: var(--tw-colors-primary-dark);
             font-weight: 700;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .nav-link .link-icon {
             width: 1.25rem;
@@ -117,17 +120,17 @@
             gap: 0.75rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--tw-colors-primary-soft);
+            border-bottom: 3px solid var(--tw-colors-primary-accent); /* Teal divider */
             width: fit-content;
         }
         .section-title {
-            font-size: 1.75rem;
+            font-size: 1.875rem; /* text-3xl */
             font-weight: 700;
             color: var(--tw-colors-primary-dark);
             letter-spacing: 0.02em;
         }
 
-        /* Skills animation (kept for aesthetics) */
+        /* Skills animation */
         @keyframes fill-bar {
             from { width: 0; }
             to { width: var(--skill-level); }
@@ -135,12 +138,12 @@
         .skill-bar-container {
             background-color: #E5E7EB;
             border-radius: 0.5rem;
-            height: 0.75rem;
+            height: 0.85rem; /* Slightly taller bar */
             overflow: hidden;
             position: relative;
         }
         .skill-bar {
-            background-color: var(--tw-colors-primary-soft);
+            background-color: var(--tw-colors-primary-accent); /* Bright Teal bar */
             height: 100%;
             border-radius: 0.5rem;
             position: absolute;
@@ -150,13 +153,13 @@
             width: 0;
         }
 
-        /* Horizontal Timeline Item Styles (kept but now nested in a static section) */
+        /* Horizontal Timeline Item Styles */
         .horizontal-timeline-container {
             display: flex;
-            flex-wrap: nowrap; /* Prevent wrap in Experience section */
+            flex-wrap: nowrap;
             gap: 2.5rem;
             padding-bottom: 1.5rem;
-            overflow-x: auto; /* Allow horizontal scroll for experience cards */
+            overflow-x: auto;
         }
         .horizontal-timeline-item {
             flex: 0 0 400px;
@@ -164,7 +167,7 @@
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             padding: 2rem;
-            border-top: 5px solid var(--tw-colors-primary-soft);
+            border-top: 5px solid var(--tw-colors-primary-accent); /* Teal accent border */
         }
 
         /* Mobile specific adjustments: Sidebar always visible, but smaller/icon-only */
@@ -222,7 +225,7 @@
         const injectContentIcons = () => {
             document.querySelectorAll('.section-title-wrapper[data-icon]').forEach(el => {
                 const iconName = el.getAttribute('data-icon');
-                const iconHtml = `<span class="contact-icon text-primary-soft w-6 h-6">${getIcon(iconName, 'w-6 h-6')}</span>`;
+                const iconHtml = `<span class="contact-icon text-primary-accent w-6 h-6">${getIcon(iconName, 'w-6 h-6')}</span>`;
                 el.insertAdjacentHTML('afterbegin', iconHtml);
             });
         };
@@ -257,6 +260,12 @@
                 link.classList.remove('active');
             });
             document.getElementById(`nav-${sectionId}`).classList.add('active');
+            
+            // Scroll to the top of the main content view when switching sections
+            const mainView = document.getElementById('main-content-view');
+            if (mainView) {
+                mainView.scrollTop = 0;
+            }
         };
 
         // --- Initialization ---
@@ -273,8 +282,6 @@
 </head>
 <body>
     
-    <!-- Removed Mobile Menu Toggle Button and Overlay for permanent display -->
-
     <!-- Main Application Container -->
     <div id="app-container">
 
@@ -306,7 +313,7 @@
             </div>
 
             <!-- Fixed Contact Info at bottom of sidebar (Hidden on mobile via CSS for space) -->
-            <div class="mt-12 pt-6 border-t border-gray-600 text-xs opacity-80 space-y-2">
+            <div class="mt-12 pt-6 border-t border-gray-700 text-xs opacity-80 space-y-2">
                 <p class="font-bold text-sm text-white mb-2">Contact</p>
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
@@ -327,10 +334,10 @@
         <main id="main-content-view">
             <div class="container max-w-full">
                 <!-- Header (Visible only in the main content area) -->
-                <header class="card text-center bg-gradient-to-br from-white to-accent-soft text-text-main py-8 sm:py-10 rounded-2xl shadow-xl relative overflow-hidden mb-6">
+                <header class="card text-center bg-gradient-to-br from-white to-secondary-accent text-text-main py-8 sm:py-10 rounded-3xl shadow-xl relative overflow-hidden mb-6">
                     <div class="relative z-10">
                         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1 text-primary-dark tracking-tighter">BASILEA RUBAN</h1>
-                        <p class="text-xl sm:text-2xl font-light opacity-90 tracking-wide text-primary-soft">Digital Data and Reliability Engineer</p>
+                        <p class="text-xl sm:text-2xl font-light opacity-90 tracking-wide text-primary-accent">Digital Data and Reliability Engineer</p>
                     </div>
                 </header>
 
@@ -353,23 +360,24 @@
                             <h2 class="section-title">Domain Expertise</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <!-- highlight-card uses secondary-accent for background -->
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-semibold text-lg text-primary-dark mb-1">Reliability & Maintenance Data Analysis</h3>
                                 <p class="text-sm text-text-muted">Expert in leveraging data to optimize maintenance strategies and ensure operational excellence.</p>
                             </div>
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-semibold text-lg text-primary-dark mb-1">Real-Time Sensor Data Analysis</h3>
                                 <p class="text-sm text-text-muted">Skilled in analyzing live sensor data for predictive and prescriptive maintenance in industrial settings.</p>
                             </div>
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-semibold text-lg text-primary-dark mb-1">Oil and Gas Field Instrumentation</h3>
                                 <p class="text-sm text-text-muted">Extensive experience with instrumentation in oil and gas environments, including green and brownfield projects.</p>
                             </div>
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-semibold text-lg text-primary-dark mb-1">Microsoft Power Platform</h3>
                                 <p class="text-sm text-text-muted">Proficient in Power BI, Power Apps, and Power Automate for developing robust business solutions and automating workflows.</p>
                             </div>
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-semibold text-lg text-primary-dark mb-1">Data Storytelling & Visualization</h3>
                                 <p class="text-sm text-text-muted">A data visualization expert skilled in transforming complex data into compelling narratives and actionable insights.</p>
                             </div>
@@ -387,7 +395,7 @@
                         <div class="horizontal-timeline-container">
                             <div class="horizontal-timeline-item">
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Digital Data and Reliability Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-soft mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
+                                <p class="text-lg font-semibold text-primary-accent mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Feb 2024 – Apr 2025</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
                                     <li>**Spearheaded** reliability and maintenance data analysis and tool development for the facility.</li>
@@ -398,7 +406,7 @@
 
                             <div class="horizontal-timeline-item">
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Senior Process Data Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-soft mb-1">Shell, Shell Business Operations, TAO Chennai</p>
+                                <p class="text-lg font-semibold text-primary-accent mb-1">Shell, Shell Business Operations, TAO Chennai</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jul 2019 – Present</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
                                     <li>Expert in maintenance and reliability data analysis, delivering innovative solutions to **optimize performance**.</li>
@@ -410,7 +418,7 @@
 
                             <div class="horizontal-timeline-item">
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Senior Instrumentation Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-soft mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
+                                <p class="text-lg font-semibold text-primary-accent mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jun 2016 – Jul 2019</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
                                     <li>Strategized and implemented **predictive and preventive maintenance** schedules to maximize machine uptime.</li>
@@ -421,7 +429,7 @@
 
                             <div class="horizontal-timeline-item">
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Electronics Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-soft mb-1">SR Engineering Marine Technical Services, Chennai, India</p>
+                                <p class="text-lg font-semibold text-primary-accent mb-1">SR Engineering Marine Technical Services, Chennai, India</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jun 2014 – Jun 2016</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
                                     <li>Designed and programmed advanced circuits and microcontrollers for specialized equipment.</li>
@@ -441,7 +449,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
                             <!-- Data & AI -->
                             <div>
-                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-accent-soft pb-1">Data & AI</h3>
+                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-primary-accent pb-1">Data & AI</h3>
                                 <div class="space-y-3">
                                     <div><p class="text-sm font-medium mb-1 text-text-main">Python</p><div class="skill-bar-container"><div class="skill-bar w-[95%]"></div></div></div>
                                     <div><p class="text-sm font-medium mb-1 text-text-main">Machine Learning & NLP</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
@@ -451,7 +459,7 @@
                             </div>
                             <!-- Platforms & Tools -->
                             <div>
-                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-accent-soft pb-1">Platforms & Tools</h3>
+                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-primary-accent pb-1">Platforms & Tools</h3>
                                 <div class="space-y-3">
                                     <div><p class="text-sm font-medium mb-1 text-text-main">SQL</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
                                     <div><p class="text-sm font-medium mb-1 text-text-main">Azure, Azure ML, Azure SQL</p><div class="skill-bar-container"><div class="skill-bar w-[85%]"></div></div></div>
@@ -461,7 +469,7 @@
                             </div>
                             <!-- Engineering & Domain -->
                             <div class="sm:col-span-2 mt-4">
-                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-accent-soft pb-1">Engineering & Core Competencies</h3>
+                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-primary-accent pb-1">Engineering & Core Competencies</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                                     <div><p class="text-sm font-medium mb-1 text-text-main">Reliability & Maintenance Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[93%]"></div></div></div>
                                     <div><p class="text-sm font-medium mb-1 text-text-main">Real Time Sensor Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
@@ -480,13 +488,14 @@
                             <h2 class="section-title">Key Achievements</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <!-- achievement cards use the secondary-accent background and primary-accent border -->
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-bold text-xl text-primary-dark mb-2">Shell Gen AI Capstone Project Winner</h3>
                                 <ul class="list-disc list-inside text-text-main text-base space-y-1 pl-2">
                                     <li>Developed a cutting-edge **Gen AI-based visual agent** for reliability and maintenance, significantly improving operational efficiency and predictive capabilities.</li>
                                 </ul>
                             </div>
-                            <div class="bg-accent-soft border-left highlight-card">
+                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
                                 <h3 class="font-bold text-xl text-primary-dark mb-2">DIY Inspire Competition Winner (Generative AI)</h3>
                                 <ul class="list-disc list-inside text-text-main text-base space-y-1 pl-2">
                                     <li>Won a Generative AI competition, excelling in rapid development using **Power Apps, Power Automate, and innovative prompt engineering in Co-Pilot**.</li>
@@ -503,24 +512,25 @@
                             <h2 class="section-title">Education</h2>
                         </div>
                         <div class="space-y-4">
-                            <div class="p-4 border border-gray-200 rounded-lg">
+                            <!-- Education item borders now match the primary accent -->
+                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
                                 <h3 class="text-xl font-bold text-primary-dark">Post Graduate Diploma in Embedded System Design</h3>
-                                <p class="text-lg text-primary-soft">Accel IT Academy, Chennai</p>
+                                <p class="text-lg text-primary-accent">Accel IT Academy, Chennai</p>
                                 <p class="text-sm text-text-muted mt-1">January 2014</p>
                             </div>
-                            <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
                                 <h3 class="text-xl font-bold text-primary-dark">B.E. in Electronics and Communication</h3>
-                                <p class="text-lg text-primary-soft">Apollo Engineering College, Anna University, Chennai</p>
+                                <p class="text-lg text-primary-accent">Apollo Engineering College, Anna University, Chennai</p>
                                 <p class="text-sm text-text-muted mt-1">August 2010 – May 2014</p>
                             </div>
-                            <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
                                 <h3 class="text-xl font-bold text-primary-dark">Certified Automation Engineer</h3>
-                                <p class="text-lg text-primary-soft">First Logic Automation, Chennai</p>
+                                <p class="text-lg text-primary-accent">First Logic Automation, Chennai</p>
                                 <p class="text-sm text-text-muted mt-1">2018</p>
                             </div>
-                            <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
                                 <h3 class="text-xl font-bold text-primary-dark">Python for Data Science (eDx)</h3>
-                                <p class="text-lg text-primary-soft">University of California, San Diego</p>
+                                <p class="text-lg text-primary-accent">University of California, San Diego</p>
                                 <p class="text-sm text-text-muted mt-1">2021</p>
                             </div>
                         </div>
