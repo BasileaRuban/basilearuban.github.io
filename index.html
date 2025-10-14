@@ -203,6 +203,11 @@
             z-index: 15; 
             box-shadow: 0 0 0 4px var(--tw-colors-surface);
         }
+        
+        /* Hide year label on mobile */
+        .timeline-year-label {
+            display: none; 
+        }
 
         /* Mobile specific adjustments: Sidebar always visible, but smaller/icon-only */
         @media (max-width: 1024px) {
@@ -302,6 +307,37 @@
             /* Ensure the dot border color is always correct on desktop */
             .horizontal-timeline-item::before {
                 border-color: var(--tw-colors-surface); 
+            }
+            
+            /* --- Year Label Styling (Desktop Only) --- */
+            .timeline-year-label {
+                display: flex;
+                position: absolute;
+                top: 2rem;
+                font-weight: 800;
+                font-size: 1.125rem;
+                color: var(--tw-colors-primary-dark);
+                z-index: 20;
+                background-color: var(--tw-colors-canvas-light); 
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.5rem;
+                border: 2px solid var(--tw-colors-primary-accent);
+                min-width: 90px;
+                height: 30px;
+                text-align: center;
+                /* Center vertically on the dot's height */
+                margin-top: -15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            /* Left-side items (Odd): Label on the right of the card, centered on the spine */
+            .horizontal-timeline-item:nth-child(odd) .timeline-year-label {
+                right: -130px; 
+            }
+
+            /* Right-side items (Even): Label on the left of the card, centered on the spine */
+            .horizontal-timeline-item:nth-child(even) .timeline-year-label {
+                left: -130px;
             }
         }
     </style>
@@ -490,16 +526,19 @@
                     </div>
                 </section>
 
-                <!-- 3. Professional Experience Section (Now a Vertical Timeline) -->
+                <!-- 3. Professional Experience Section (Vertical Timeline with Years) -->
                 <section id="experience" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="briefcase">
                             <h2 class="section-title">Professional Experience</h2>
                         </div>
-                        <p class="text-sm text-text-muted mb-4">A chronological view of my primary professional roles.</p>
-                        <!-- The CSS for this container now handles the alternating left/right layout on desktop (lg:), but remains a single column on mobile. -->
+                        <p class="text-sm text-text-muted mb-4">A chronological view of my primary professional roles. Years are visible on the central spine on desktop.</p>
+                        
                         <div class="horizontal-timeline-container">
+                            
+                            <!-- 1. Shell Digital Data and Reliability Engineer (2024 - 2025) -->
                             <div class="horizontal-timeline-item">
+                                <span class="timeline-year-label">2024</span>
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Digital Data and Reliability Engineer</h3>
                                 <p class="text-lg font-semibold text-primary-accent mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Feb 2024 – Apr 2025</p>
@@ -511,7 +550,9 @@
                                 </ul>
                             </div>
 
+                            <!-- 2. Shell Senior Process Data Engineer (2019 - Present) -->
                             <div class="horizontal-timeline-item">
+                                <span class="timeline-year-label">2019</span>
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Senior Process Data Engineer</h3>
                                 <p class="text-lg font-semibold text-primary-accent mb-1">Shell, Shell Business Operations, TAO Chennai</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jul 2019 – Present</p>
@@ -523,7 +564,9 @@
                                 </ul>
                             </div>
 
+                            <!-- 3. TNPL Senior Instrumentation Engineer (2016 - 2019) -->
                             <div class="horizontal-timeline-item">
+                                <span class="timeline-year-label">2016</span>
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Senior Instrumentation Engineer</h3>
                                 <p class="text-lg font-semibold text-primary-accent mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jun 2016 – Jul 2019</p>
@@ -535,7 +578,18 @@
                                 </ul>
                             </div>
                             
-                            <!-- The 'Electronics Engineer' entry was previously removed. -->
+                            <!-- 4. SR Engineering Electronics Engineer (2014 - 2016) - NEW ENTRY -->
+                            <div class="horizontal-timeline-item">
+                                <span class="timeline-year-label">2014</span>
+                                <h3 class="text-2xl font-bold text-primary-dark mb-1">Electronics Engineer</h3>
+                                <p class="text-lg font-semibold text-primary-accent mb-1">SR Engineering Marine Technical Services, Chennai, India</p>
+                                <p class="text-sm text-text-muted mb-4 font-mono">Jun 2014 – Jun 2016</p>
+                                <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
+                                    <li>Designing and programming advanced circuits and microcontrollers.</li>
+                                    <li>Diagnosing and repairing faults in circuit boards and electronic panels.</li>
+                                    <li>Developing communication protocols like I2C and Modbus for Coast Guard and Navy ships.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </section>
