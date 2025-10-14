@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basilea Ruban - Maintenance and Reliability Data Analyst</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind for custom colors and font -->
-    <script>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors and font --><script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -15,34 +13,31 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        // New Professional Data Palette: Deep Navy & Bright Teal
-                        'canvas-light': '#F8FAFC',  // Light Blue-Gray for main background
-                        'surface': '#FFFFFF',       // Pure white for main cards
-                        'primary-dark': '#0F172A',  // Deep Navy for headers, contrast, and sidebar background
-                        'primary-accent': '#06B6D4', // Bright Teal/Cyan for key accents, links, and dividers
-                        'secondary-accent': '#ECFEFF', // Very Pale Cyan for subtle highlights/hover
-                        'text-main': '#1F2937',     // Dark Gray for main body text
-                        'text-muted': '#6B7280',    // Medium Gray for secondary text
-                        
-                        // Sidebar specific (mapped from new primary colors)
-                        'sidebar-bg': '#0F172A',    
-                        'sidebar-link': '#E2E8F0',  // Light Gray for link text
-                        'sidebar-hover': '#0E7490', // Darker Teal for hover state
+                        // NEW VIBRANT & MODERN PALETTE: Electric Cyan & Professional Blue
+                        'canvas-light': '#F7F7F7',      // Very slight off-white background
+                        'surface': '#FFFFFF',           // Pure White for main cards
+                        'primary-accent': '#06B6D4',    // Vibrant Electric Cyan (Tailwind cyan-500)
+                        'secondary-highlight': '#2563EB', // Professional Blue (Tailwind blue-600)
+                        'text-dark': '#1F2937',         // Dark Slate Gray for maximum contrast
+                        'text-muted': '#6B7280',        // Medium Gray for secondary text
+                    },
+                    boxShadow: {
+                        // Custom shadow for a modern, lifted effect, updated for blue
+                        'vibrant-lg': '0 10px 25px -3px rgba(6, 182, 212, 0.2), 0 4px 10px -2px rgba(37, 99, 235, 0.15)',
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Inter --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* CRITICAL: Set the entire page to a fixed height with no overall scroll */
         html, body {
             height: 100%;
             overflow: hidden;
             font-family: 'Inter', sans-serif;
-            background-color: var(--tw-colors-canvas-light);
-            color: var(--tw-colors-text-main);
+            background-color: var(--tw-colors-canvas-light); 
+            color: var(--tw-colors-text-dark); 
             line-height: 1.6;
         }
 
@@ -52,82 +47,94 @@
             display: flex;
         }
 
-        /* Sidebar styles (Default Desktop/Tablet) */
+        /* Sidebar styles */
         #sidebar {
-            width: 280px; /* Fixed width for desktop */
+            width: 300px; /* Slightly wider sidebar */
             flex-shrink: 0;
-            background-color: var(--tw-colors-sidebar-bg); /* Deep Navy */
-            color: var(--tw-colors-sidebar-link);
-            padding: 2.5rem 1.5rem;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.25); /* Darker shadow for depth */
-            overflow-y: auto; /* Scroll sidebar if it gets too tall */
+            background-color: var(--tw-colors-surface); /* Pure White */
+            padding: 3rem 1.5rem;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05); 
+            overflow-y: auto; 
         }
         
         /* Main content area takes remaining space and is the scroll container */
         #main-content-view {
             flex-grow: 1;
-            padding: 2rem;
-            overflow-y: auto; /* Only this section scrolls for content overflow */
-            -webkit-overflow-scrolling: touch;
+            padding: 2.5rem;
+            overflow-y: auto; 
+            background-color: var(--tw-colors-canvas-light);
         }
 
-        /* Card Styles: Crisp and Clean */
+        /* Card Styles: Clean, high-contrast, and deeply rounded */
         .card {
-            background-color: var(--tw-colors-surface);
-            border-radius: 1.5rem; /* Slightly more rounded */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #E5E7EB;
-            padding: 2.5rem;
-            margin-bottom: 2.25rem;
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            background-color: var(--tw-colors-surface); /* White Card */
+            border-radius: 2rem; /* Highly rounded */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft, modern lift */
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--tw-shadow-vibrant-lg); /* Vibrant shadow lift on hover */
         }
         
         /* Sidebar link styles */
         .nav-link {
             display: flex;
             align-items: center;
-            padding: 0.85rem 1rem; /* Adjusted padding */
-            margin-bottom: 0.5rem;
-            border-radius: 0.75rem;
+            padding: 1rem 1.25rem; 
+            margin-bottom: 0.75rem;
+            border-radius: 1rem;
             cursor: pointer;
-            transition: background-color 0.2s, color 0.2s, transform 0.1s;
-            font-weight: 500;
-            gap: 0.75rem;
+            transition: all 0.25s, transform 0.1s;
+            font-weight: 600;
+            gap: 1rem;
+            color: var(--tw-colors-text-muted); /* Muted gray by default */
         }
         .nav-link:hover {
-            background-color: var(--tw-colors-sidebar-hover); /* Darker Teal hover */
-            color: white; 
-            transform: translateX(3px);
+            background-color: rgba(6, 182, 212, 0.1); /* Light transparent Cyan hover */
+            color: var(--tw-colors-primary-accent); /* Vibrant Cyan text */
+            transform: translateX(5px);
         }
         .nav-link.active {
-            background-color: var(--tw-colors-primary-accent); /* Bright Teal active */
-            color: var(--tw-colors-primary-dark);
+            background-color: var(--tw-colors-primary-accent); /* Solid Vibrant Cyan */
+            color: var(--tw-colors-surface); /* White text on accent */
             font-weight: 700;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 15px rgba(6, 182, 212, 0.4); 
+            transform: translateX(0);
         }
         .nav-link .link-icon {
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
             stroke: currentColor;
             fill: none;
             stroke-width: 2;
         }
         
-        /* Section Title Styles */
+        /* Section Title Styles - High Impact with accent line */
         .section-title-wrapper {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--tw-colors-primary-accent); /* Teal divider */
-            width: fit-content;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
         }
         .section-title {
-            font-size: 1.875rem; /* text-3xl */
-            font-weight: 700;
-            color: var(--tw-colors-primary-dark);
-            letter-spacing: 0.02em;
+            font-size: 2.5rem; 
+            font-weight: 800;
+            color: var(--tw-colors-text-dark);
+            letter-spacing: -0.04em;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 5px;
+            background-color: var(--tw-colors-secondary-highlight); /* Professional Blue underline */
+            border-radius: 2px;
         }
 
         /* Skills animation */
@@ -136,208 +143,96 @@
             to { width: var(--skill-level); }
         }
         .skill-bar-container {
-            background-color: #E5E7EB;
-            border-radius: 0.5rem;
-            height: 0.85rem; /* Slightly taller bar */
+            background-color: rgba(6, 182, 212, 0.1); /* Light Cyan track */
+            border-radius: 0.75rem;
+            height: 1rem; 
             overflow: hidden;
             position: relative;
         }
         .skill-bar {
-            background-color: var(--tw-colors-primary-accent); /* Bright Teal bar */
+            background-color: var(--tw-colors-primary-accent); /* Vibrant Cyan bar */
             height: 100%;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             position: absolute;
             top: 0;
             left: 0;
-            animation: fill-bar 1.5s ease-out forwards;
+            animation: fill-bar 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
             width: 0;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
         }
 
-        /* --- Vertical Timeline Styles (Mobile-First / Single Column) --- */
+        /* --- Vertical Timeline Styles (Vibrant Adaptation) --- */
         
+        /* Uses custom classes to apply vibrant look to the timeline */
         .horizontal-timeline-container {
-            display: block;
-            position: relative;
-            padding-left: 24px; /* Space for the line and markers */
-            padding-bottom: 0;
-            gap: 0; 
-            overflow-x: hidden; 
+            padding-left: 28px; 
+            border-left: 4px solid var(--tw-colors-secondary-highlight); /* Professional Blue spine */
         }
-
-        /* Vertical Line (Default: Left-aligned) */
-        .horizontal-timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 12px; /* Center the line */
-            width: 3px;
-            height: 100%;
-            background-color: #E5E7EB; 
-            border-radius: 9999px;
-            z-index: 5;
-        }
-
+        
         .horizontal-timeline-item {
-            width: 100%;
-            margin-bottom: 2.5rem;
-            padding: 2rem;
-            padding-left: 3rem; 
-            position: relative;
-            border-left: 5px solid var(--tw-colors-primary-accent); 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
             background-color: var(--tw-colors-surface);
-            z-index: 10;
+            border-radius: 1rem; 
+            margin-left: 20px;
+            padding: 1.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease-out;
+        }
+        .horizontal-timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3);
         }
 
-        /* Timeline dot/point (Default: Left aligned on line) */
+        /* Timeline dot/point (Placed on the Blue spine) */
         .horizontal-timeline-item::before {
             content: '';
             position: absolute;
-            top: 2rem; 
-            left: -10px; /* Position over the vertical line */
-            width: 20px;
-            height: 20px;
+            top: 1.5rem;
+            left: -43px; 
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background-color: var(--tw-colors-primary-accent); 
-            border: 4px solid var(--tw-colors-canvas-light); 
-            z-index: 15; 
-            box-shadow: 0 0 0 4px var(--tw-colors-surface);
+            background-color: var(--tw-colors-primary-accent); /* Vibrant Cyan dot */
+            border: 4px solid var(--tw-colors-canvas-light); /* Off-White Border */
+            box-shadow: 0 0 0 2px var(--tw-colors-primary-accent);
+            z-index: 10; 
         }
         
-        /* Hide year label on mobile */
-        .timeline-year-label {
-            display: none; 
-        }
-
-        /* Mobile specific adjustments: Sidebar always visible, but smaller/icon-only */
+        /* Mobile specific adjustments (Collapsing Sidebar) */
         @media (max-width: 1024px) {
             #sidebar {
-                width: 100px; /* Reduced width for mobile */
-                padding: 1rem 0.5rem; /* Reduced padding */
+                width: 80px; 
+                padding: 1rem 0.25rem; 
             }
-            
-            #sidebar .text-2xl, #sidebar .mt-12, #sidebar .text-xs {
-                display: none; /* Hide header and contact info to save vertical space */
+            #sidebar h2, #sidebar .mt-12, #sidebar .text-xs {
+                display: none; 
             }
-
             .nav-link {
-                justify-content: center; /* Center icons */
-                padding: 0.65rem 0.25rem; /* Adjust padding for icon-only links */
+                justify-content: center; 
+                padding: 0.75rem 0.25rem; 
             }
-
             .nav-link span {
-                display: none; /* Hide link text labels */
+                display: none; 
             }
-            
             #main-content-view {
                 padding: 1rem;
             }
-        }
-        
-        /* --- Desktop Alternating Timeline Styles (lg breakpoint) --- */
-        @media (min-width: 1024px) {
-            
-            /* Center the main vertical line */
-            .horizontal-timeline-container::before {
-                left: 50%; /* Center line */
-                margin-left: -1.5px; /* Adjust for line width */
+            .card {
+                padding: 2rem;
+                border-radius: 1.5rem;
             }
-
-            .horizontal-timeline-item {
-                width: calc(50% - 30px); /* Half width minus margin/padding */
-                padding: 2.5rem; /* Standardize padding */
-                margin-bottom: 3.5rem;
+            .section-title {
+                font-size: 2rem;
             }
-
-            /* Left-side items (Odd) */
-            .horizontal-timeline-item:nth-child(odd) {
-                float: left;
-                clear: both; /* Crucial for vertical stacking */
-                border-left: 5px solid var(--tw-colors-primary-accent);
-                border-right: none;
-            }
-
-            /* Right-side items (Even) */
-            .horizontal-timeline-item:nth-child(even) {
-                float: right;
-                clear: both; /* Crucial for vertical stacking */
-                border-left: none;
-                border-right: 5px solid var(--tw-colors-primary-accent);
-            }
-            
-            /* Clear floating elements after the container */
-            .horizontal-timeline-container::after {
-                content: '';
-                display: table;
-                clear: both;
-            }
-
-            /* Dot/Marker for Left Items (Odd) */
-            .horizontal-timeline-item:nth-child(odd)::before {
-                left: calc(100% + 5px); /* Position on the right edge of the card, on the center line */
-            }
-            
-            /* Dot/Marker for Right Items (Even) */
-            .horizontal-timeline-item:nth-child(even)::before {
-                left: -25px; /* Position on the left edge of the card, on the center line */
-            }
-
-            /* Add visual connector pointer for left items */
-            .horizontal-timeline-item:nth-child(odd)::after {
-                content: '';
-                position: absolute;
-                top: 2rem;
-                right: -14px;
-                border-style: solid;
-                border-width: 10px 0 10px 14px; /* Right pointing triangle */
-                border-color: transparent transparent transparent var(--tw-colors-surface);
-            }
-
-            /* Add visual connector pointer for right items */
-            .horizontal-timeline-item:nth-child(even)::after {
-                content: '';
-                position: absolute;
-                top: 2rem;
-                left: -14px;
-                border-style: solid;
-                border-width: 10px 14px 10px 0; /* Left pointing triangle */
-                border-color: transparent var(--tw-colors-surface) transparent transparent;
-            }
-
-            /* Ensure the dot border color is always correct on desktop */
             .horizontal-timeline-item::before {
-                border-color: var(--tw-colors-surface); 
+                left: -32px; /* Adjust dot position for smaller sidebar padding */
             }
-            
-            /* --- Year Label Styling (Desktop Only) --- */
-            .timeline-year-label {
-                display: flex;
-                position: absolute;
-                top: 2rem;
-                font-weight: 800;
-                font-size: 1.125rem;
-                color: var(--tw-colors-primary-dark);
-                z-index: 20;
-                background-color: var(--tw-colors-canvas-light); 
-                padding: 0.25rem 0.5rem;
-                border-radius: 0.5rem;
-                border: 2px solid var(--tw-colors-primary-accent);
-                min-width: 90px;
-                height: 30px;
-                text-align: center;
-                /* Center vertically on the dot's height */
-                margin-top: -15px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            .horizontal-timeline-container {
+                padding-left: 20px;
             }
-
-            /* Left-side items (Odd): Label on the right of the card, centered on the spine */
-            .horizontal-timeline-item:nth-child(odd) .timeline-year-label {
-                right: -130px; 
-            }
-
-            /* Right-side items (Even): Label on the left of the card, centered on the spine */
-            .horizontal-timeline-item:nth-child(even) .timeline-year-label {
-                left: -130px;
+            .horizontal-timeline-item {
+                margin-left: 10px;
             }
         }
     </style>
@@ -345,6 +240,7 @@
         // --- Icon & Utility Functions (Keep) ---
 
         const getIcon = (name, classes = 'link-icon') => {
+            // Icons adapted to stroke/color based on the light/dark theme color switch
             const icons = {
                 home: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
                 briefcase: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
@@ -359,14 +255,18 @@
         const injectSidebarIcons = () => {
             document.querySelectorAll('[data-sidebar-icon]').forEach(el => {
                 const iconName = el.getAttribute('data-sidebar-icon');
-                el.innerHTML = getIcon(iconName) + el.innerHTML;
+                // Ensure text is only added once
+                if (el.innerHTML.indexOf('<svg') === -1) {
+                   el.insertAdjacentHTML('afterbegin', getIcon(iconName));
+                }
             });
         };
 
         const injectContentIcons = () => {
             document.querySelectorAll('.section-title-wrapper[data-icon]').forEach(el => {
                 const iconName = el.getAttribute('data-icon');
-                const iconHtml = `<span class="contact-icon text-primary-accent w-6 h-6">${getIcon(iconName, 'w-6 h-6')}</span>`;
+                // Use primary-accent for the icon color
+                const iconHtml = `<span class="contact-icon w-8 h-8 text-primary-accent">${getIcon(iconName, 'w-8 h-8')}</span>`; 
                 el.insertAdjacentHTML('afterbegin', iconHtml);
             });
         };
@@ -423,235 +323,202 @@
 </head>
 <body>
     
-    <!-- Main Application Container -->
-    <div id="app-container">
+    <!-- Main Application Container --><div id="app-container">
 
-        <!-- Left Sidebar Navigation -->
-        <nav id="sidebar" class="lg:static">
-            <!-- Sidebar Header is hidden on mobile via CSS for compactness -->
-            <h2 class="text-2xl font-extrabold mb-8 text-white">BASILEA RUBAN</h2>
+        <!-- Left Sidebar Navigation --><nav id="sidebar" class="lg:static">
+            <!-- Sidebar Header --><h2 class="text-3xl font-extrabold mb-10 text-text-dark tracking-tighter">BASILEA RUBAN</h2>
             
             <div class="space-y-2">
-                <!-- Navigation Links -->
-                <div id="nav-summary" data-sidebar-icon="home" onclick="showSection('summary')" class="nav-link">
+                <!-- Navigation Links --><div id="nav-summary" data-sidebar-icon="home" onclick="showSection('summary')" class="nav-link">
                     <span>Summary</span>
                 </div>
                 <div id="nav-domain-expertise" data-sidebar-icon="cpu" onclick="showSection('domain-expertise')" class="nav-link">
                     <span>Domain Expertise</span>
                 </div>
                 <div id="nav-experience" data-sidebar-icon="briefcase" onclick="showSection('experience')" class="nav-link">
-                    <span>Professional Experience</span>
+                    <span>Experience</span>
                 </div>
                 <div id="nav-skills" data-sidebar-icon="tool" onclick="showSection('skills')" class="nav-link">
-                    <span>Technical Skills</span>
+                    <span>Tech Skills</span>
                 </div>
                 <div id="nav-achievements" data-sidebar-icon="award" onclick="showSection('achievements')" class="nav-link">
-                    <span>Key Achievements</span>
+                    <span>Achievements</span>
                 </div>
                 <div id="nav-education" data-sidebar-icon="graduation" onclick="showSection('education')" class="nav-link">
                     <span>Education</span>
                 </div>
             </div>
 
-            <!-- Fixed Contact Info at bottom of sidebar (Hidden on mobile via CSS for space) -->
-            <div class="mt-12 pt-6 border-t border-gray-700 text-xs opacity-80 space-y-2">
-                <p class="font-bold text-sm text-white mb-2">Contact</p>
-                <div class="flex items-center gap-2">
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
+            <!-- Fixed Contact Info at bottom of sidebar --><div class="mt-16 pt-8 border-t border-gray-100 text-sm opacity-90 space-y-3">
+                <p class="font-bold text-base text-text-dark mb-2">Connect</p>
+                <div class="flex items-center gap-3 text-text-muted">
+                    <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
                     <span>+91 73580 14327</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.83 1.83 0 0 1-2.06 0L2 7"/></svg>
+                <div class="flex items-center gap-3 text-text-muted">
+                    <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.83 1.83 0 0 1-2.06 0L2 7"/></svg>
                     <span>basilearuban@gmail.com</span>
                 </div>
-                <a href="https://www.linkedin.com/in/basilea-ruban-2a5a50117/" target="_blank" class="flex items-center gap-2 hover:underline">
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 0-6 6v7H7v-7a9 9 0 0 1 9-9h1V2h-3C6.46 2 2 6.46 2 12v9h3v-7a4 4 0 0 0 4-4h1v11h3v-7c0-1.1.9-2 2-2s2 .9 2 2v7h3v-7a6 6 0 0 0-6-6zM7 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+                <a href="https://www.linkedin.com/in/basilea-ruban-2a5a50117/" target="_blank" class="flex items-center gap-3 hover:text-secondary-highlight text-primary-accent font-semibold transition">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 0-6 6v7H7v-7a9 9 0 0 1 9-9h1V2h-3C6.46 2 2 6.46 2 12v9h3v-7a4 4 0 0 0 4-4h1v11h3v-7c0-1.1.9-2 2-2s2 .9 2 2v7h3v-7a6 6 0 0 0-6-6zM7 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
                     <span>LinkedIn Profile</span>
                 </a>
             </div>
         </nav>
 
-        <!-- Main Content Viewport -->
-        <main id="main-content-view">
-            <div class="container max-w-full">
-                <!-- Header (Visible only in the main content area) -->
-                <header class="card text-center bg-gradient-to-br from-white to-secondary-accent text-text-main py-8 sm:py-10 rounded-3xl shadow-xl relative overflow-hidden mb-6">
-                    <div class="relative z-10">
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-1 text-primary-dark tracking-tighter">BASILEA RUBAN</h1>
-                        <p class="text-xl sm:text-2xl font-light opacity-90 tracking-wide text-primary-accent">Maintenance and Reliability Data Analyst</p>
+        <!-- Main Content Viewport --><main id="main-content-view">
+            <div class="container max-w-6xl mx-auto">
+                <!-- Header Card (Uses Secondary Highlight color for background for strong visual pop) --><header class="card bg-secondary-highlight text-surface py-12 rounded-3xl shadow-2xl shadow-secondary-highlight/30 mb-10 border-none transition-none">
+                    <div class="relative z-10 text-center">
+                        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-2 tracking-tight drop-shadow-lg">BASILEA RUBAN</h1>
+                        <p class="text-xl sm:text-2xl font-light opacity-90 tracking-wider">MAINTENANCE & RELIABILITY DATA ANALYST</p>
                     </div>
                 </header>
 
-                <!-- 1. Professional Summary Section -->
-                <section id="summary" class="content-section">
+                <!-- 1. Professional Summary Section --><section id="summary" class="content-section">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="home">
                             <h2 class="section-title">Professional Summary</h2>
                         </div>
-                        <p class="text-lg text-text-muted leading-relaxed">
-                            Experienced and innovation-driven professional with over 10 years of experience in optimizing maintenance strategies, digitalizing industrial processes, and improving equipment reliability across complex plant operations. Proven expertise in predictive and preventive maintenance, fault diagnostics, and commissioning, backed by strong analytical and problem-solving capabilities. Specialized in driving digital transformation through automation of maintenance KPIs and real-time sensor data analysis, enabling smarter decision-making and operational efficiency. Skilled in implementing AI, machine learning, and statistical models to enhance reliability reporting and asset performance. Proficient in Microsoft Power Platform, including AI Prompt Builder and Copilot Studio, with hands-on experience in Python for developing intelligent solutions tailored to maintenance and reliability needs. Passionate about leveraging data to deliver actionable insights and sustainable improvements.
+                        <p class="text-lg text-text-dark leading-relaxed">
+                            Experienced and innovation-driven professional with over 10 years of experience in optimizing maintenance strategies, digitalizing industrial processes, and improving equipment reliability across complex plant operations. Proven expertise in **predictive and preventive maintenance**, fault diagnostics, and commissioning, backed by strong analytical and problem-solving capabilities. Specialized in driving digital transformation through automation of maintenance KPIs and **real-time sensor data analysis**, enabling smarter decision-making and operational efficiency. Skilled in implementing AI, machine learning, and statistical models to enhance reliability reporting and asset performance. Proficient in **Microsoft Power Platform** and **Python**, developing intelligent solutions tailored to maintenance and reliability needs. Passionate about leveraging data to deliver actionable insights and sustainable improvements.
                         </p>
                     </div>
                 </section>
 
-                <!-- 2. Domain Expertise Section -->
-                <section id="domain-expertise" class="content-section hidden">
+                <!-- 2. Domain Expertise Section --><section id="domain-expertise" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="cpu">
                             <h2 class="section-title">Domain Expertise</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- highlight-card uses secondary-accent for background -->
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-semibold text-lg text-primary-dark mb-1">Reliability & Maintenance Data Analysis</h3>
+                            <!-- Expertise Cards: White background, primary-accent border on top, and dynamic shadow --><div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Reliability & Maintenance Analytics</h3>
                                 <p class="text-sm text-text-muted">Expert in leveraging data to optimize maintenance strategies and ensure operational excellence.</p>
                             </div>
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-semibold text-lg text-primary-dark mb-1">Real-Time Sensor Data Analysis</h3>
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Real-Time Sensor Data Analysis</h3>
                                 <p class="text-sm text-text-muted">Skilled in analyzing live sensor data for predictive and prescriptive maintenance in industrial settings.</p>
                             </div>
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-semibold text-lg text-primary-dark mb-1">Oil and Gas Field Instrumentation</h3>
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Oil and Gas Field Instrumentation</h3>
                                 <p class="text-sm text-text-muted">Extensive experience with instrumentation in oil and gas environments, including green and brownfield projects.</p>
                             </div>
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-semibold text-lg text-primary-dark mb-1">Microsoft Power Platform</h3>
-                                <p class="text-sm text-text-muted">Proficient in Power BI, Power Apps, and Power Automate for developing robust business solutions and automating workflows.</p>
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Microsoft Power Platform & AI</h3>
+                                <p class="text-sm text-text-muted">Proficient in Power BI, Power Apps, Power Automate, and Copilot Studio for developing robust business solutions.</p>
                             </div>
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-semibold text-lg text-primary-dark mb-1">Data Storytelling & Visualization</h3>
-                                <p class="text-sm text-text-muted">A data visualization expert skilled in transforming complex data into compelling narratives and actionable insights.</p>
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Data Storytelling & Visualization</h3>
+                                <p class="text-sm text-text-muted">Transforming complex data into compelling narratives and actionable insights using advanced visualization techniques.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 3. Professional Experience Section (Vertical Timeline with Years) -->
-                <section id="experience" class="content-section hidden">
+                <!-- 3. Professional Experience Section (Vertical Timeline) --><section id="experience" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="briefcase">
                             <h2 class="section-title">Professional Experience</h2>
                         </div>
-                        <p class="text-sm text-text-muted mb-4">A chronological view of my primary professional roles. Years are visible on the central spine on desktop.</p>
+                        <p class="text-base text-text-muted mb-6">A chronological view of my primary professional roles, detailed with key contributions.</p>
                         
                         <div class="horizontal-timeline-container">
                             
-                            <!-- 1. Shell Digital Data and Reliability Engineer (2024 - 2025) -->
-                            <div class="horizontal-timeline-item">
-                                <span class="timeline-year-label">2024</span>
-                                <h3 class="text-2xl font-bold text-primary-dark mb-1">Maintenance and Reliability Data Analyst</h3>
-                                <p class="text-lg font-semibold text-primary-accent mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
+                            <!-- 1. Shell Digital Data and Reliability Engineer (2024 - 2025) --><div class="horizontal-timeline-item">
+                                <span class="absolute -left-20 top-6 text-xl font-extrabold text-secondary-highlight hidden lg:block">2024</span>
+                                <h3 class="text-2xl font-bold text-text-dark mb-1">Maintenance and Reliability Data Analyst</h3>
+                                <p class="text-lg font-semibold text-text-dark mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Feb 2024 – Apr 2025</p>
-                                <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>Led strategic initiatives in reliability and maintenance analytics, driving the development of digital tools to enhance operational efficiency across the facility.</li>
+                                <ul class="list-disc list-inside text-text-dark space-y-2 pl-2 text-base">
+                                    <li>Led strategic initiatives in reliability and maintenance analytics, driving the development of **digital tools** to enhance operational efficiency across the facility.</li>
                                     <li>Championed production optimization and spearheaded the digital transformation of planning and reporting workflows, resulting in improved transparency and agility.</li>
-                                    <li>Implemented real-time sensor data analysis to enable predictive and prescriptive maintenance, minimizing downtime and maximizing asset performance.</li>
-                                    <li>Successfully delivered a Proof of Concept (PoC) for Rel-AI, a Reliability AI agent built using Shell e, showcasing the potential of AI-driven insights in reliability engineering.</li>
+                                    <li>Implemented **real-time sensor data analysis** to enable predictive and prescriptive maintenance, minimizing downtime and maximizing asset performance.</li>
+                                    <li>Successfully delivered a **Proof of Concept (PoC) for Rel-AI**, a Reliability AI agent, showcasing the potential of AI-driven insights in reliability engineering.</li>
                                 </ul>
                             </div>
 
-                            <!-- 2. Shell Senior Process Data Engineer (2019 - Present) -->
-                            <div class="horizontal-timeline-item">
-                                <span class="timeline-year-label">2019</span>
-                                <h3 class="text-2xl font-bold text-primary-dark mb-1">Senior Process Data Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-accent mb-1">Shell, Shell Business Operations, TAO Chennai</p>
+                            <!-- 2. Shell Senior Process Data Engineer (2019 - Present) --><div class="horizontal-timeline-item">
+                                <span class="absolute -left-20 top-6 text-xl font-extrabold text-secondary-highlight hidden lg:block">2019</span>
+                                <h3 class="text-2xl font-bold text-text-dark mb-1">Senior Process Data Engineer</h3>
+                                <p class="text-lg font-semibold text-text-dark mb-1">Shell, Shell Business Operations, TAO Chennai</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jul 2019 – Present</p>
-                                <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>**Experienced Maintenance & Reliability Data Analyst | Digital Transformation Advocate:** Proven expertise in maintenance and reliability data analysis, consistently delivering innovative solutions to **optimize asset performance** and streamline workflows. Adept at leveraging digital tools to drive operational efficiency and enhance decision-making.</li>
+                                <ul class="list-disc list-inside text-text-dark space-y-2 pl-2 text-base">
+                                    <li>Expert in **Maintenance & Reliability Data Analysis** and **Digital Transformation**, delivering innovative solutions to optimize asset performance and streamline workflows.</li>
                                     <li>Demonstrated mastery of the **Microsoft Power Platform** (Power BI, Power Apps, and Power Automate) to build scalable, user-friendly applications and automate complex processes.</li>
                                     <li>Advanced proficiency in **Python, Azure Machine Learning, Databricks, and Git**, enabling the development of robust data engineering pipelines and predictive analytics models.</li>
-                                    <li>Serving as a **DIY Coach** for TAO, Chennai and Pearl GTL, Qatar for the past 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools to foster a culture of innovation and continuous improvement.</li>
+                                    <li>Served as a **DIY Coach** for TAO, Chennai and Pearl GTL, Qatar for 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools.</li>
                                 </ul>
                             </div>
 
-                            <!-- 3. TNPL Senior Instrumentation Engineer (2016 - 2019) -->
-                            <div class="horizontal-timeline-item">
-                                <span class="timeline-year-label">2016</span>
-                                <h3 class="text-2xl font-bold text-primary-dark mb-1">Senior Instrumentation Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-accent mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
+                            <!-- 3. TNPL Senior Instrumentation Engineer (2016 - 2019) --><div class="horizontal-timeline-item">
+                                <span class="absolute -left-20 top-6 text-xl font-extrabold text-secondary-highlight hidden lg:block">2016</span>
+                                <h3 class="text-2xl font-bold text-text-dark mb-1">Senior Instrumentation Engineer</h3>
+                                <p class="text-lg font-semibold text-text-dark mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jun 2016 – Jul 2019</p>
-                                <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>**Maintenance & Commissioning Specialist | Reliability-Focused Problem Solver:** Strategized and implemented **predictive and preventive maintenance** programs to enhance equipment reliability and maximize uptime.</li>
+                                <ul class="list-disc list-inside text-text-dark space-y-2 pl-2 text-base">
+                                    <li>Strategized and implemented **predictive and preventive maintenance** programs to enhance equipment reliability and maximize uptime.</li>
                                     <li>Proficient in diagnosing and resolving operational bottlenecks and equipment failures using **Root Cause Analysis (RCA)** methodologies.</li>
                                     <li>Led commissioning, modifications, and major repair activities, with a strong focus on fault-finding and efficiency improvement.</li>
-                                    <li>Possess hands-on experience across a wide range of **field instruments, analyzers, Distributed Control Systems (DCS), and Programmable Logic Controllers (PLC)**, ensuring seamless integration and optimal performance of control systems.</li>
-                                </ul>
-                            </div>
-                            
-                            <!-- 4. SR Engineering Electronics Engineer (2014 - 2016) - NEW ENTRY -->
-                            <div class="horizontal-timeline-item">
-                                <span class="timeline-year-label">2014</span>
-                                <h3 class="text-2xl font-bold text-primary-dark mb-1">Electronics Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-accent mb-1">SR Engineering Marine Technical Services, Chennai, India</p>
-                                <p class="text-sm text-text-muted mb-4 font-mono">Jun 2014 – Jun 2016</p>
-                                <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>Designing and programming advanced circuits and microcontrollers.</li>
-                                    <li>Diagnosing and repairing faults in circuit boards and electronic panels.</li>
-                                    <li>Developing communication protocols like I2C and Modbus for Coast Guard and Navy ships.</li>
+                                    <li>Possess hands-on experience across a wide range of **field instruments, DCS, and PLC** control systems.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 4. Technical Skills Section -->
-                <section id="skills" class="content-section hidden">
+                <!-- 4. Technical Skills Section --><section id="skills" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="tool">
                             <h2 class="section-title">Technical Skills & Proficiency</h2>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-                            <!-- Data & AI -->
-                            <div>
-                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-primary-accent pb-1">Data & AI</h3>
-                                <div class="space-y-3">
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Python</p><div class="skill-bar-container"><div class="skill-bar w-[95%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Copilot Studio</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Data Visualization (Plotly, Power BI)</p><div class="skill-bar-container"><div class="skill-bar w-[85%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Time Series & Statistical Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[88%]"></div></div></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                            <!-- Data & AI --><div>
+                                <h3 class="font-bold text-2xl mb-4 text-text-dark text-primary-accent">Data & AI</h3>
+                                <div class="space-y-5">
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Python</p><div class="skill-bar-container"><div class="skill-bar w-[95%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Copilot Studio & Gen AI Prompting</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Data Visualization (Plotly, Power BI)</p><div class="skill-bar-container"><div class="skill-bar w-[85%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Time Series & Statistical Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[88%]"></div></div></div>
                                 </div>
                             </div>
-                            <!-- Platforms & Tools -->
-                            <div>
-                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-primary-accent pb-1">Platforms & Tools</h3>
-                                <div class="space-y-3">
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">SQL</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Azure, Azure ML, Azure SQL</p><div class="skill-bar-container"><div class="skill-bar w-[85%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Power Platform (Apps, Automate, AI Builder)</p><div class="skill-bar-container"><div class="skill-bar w-[92%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">SAP, Databricks, Git</p><div class="skill-bar-container"><div class="skill-bar w-[78%]"></div></div></div>
+                            <!-- Platforms & Tools --><div>
+                                <h3 class="font-bold text-2xl mb-4 text-text-dark text-primary-accent">Platforms & Tools</h3>
+                                <div class="space-y-5">
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">SQL</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Azure, Azure ML, Azure SQL</p><div class="skill-bar-container"><div class="skill-bar w-[85%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Power Platform (Apps, Automate, AI Builder)</p><div class="skill-bar-container"><div class="skill-bar w-[92%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">SAP, Databricks, Git</p><div class="skill-bar-container"><div class="skill-bar w-[78%]"></div></div></div>
                                 </div>
                             </div>
-                            <!-- Engineering & Domain -->
-                            <div class="sm:col-span-2 mt-4">
-                                <h3 class="font-bold text-lg mb-3 text-primary-dark border-b-2 border-primary-accent pb-1">Engineering & Core Competencies</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Reliability & Maintenance Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[93%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Real Time Sensor Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Embedded System & Microcontroller</p><div class="skill-bar-container"><div class="skill-bar w-[80%]"></div></div></div>
-                                    <div><p class="text-sm font-medium mb-1 text-text-main">Analytical Skill & Critical Thinking</p><div class="skill-bar-container"><div class="skill-bar w-[95%]"></div></div></div>
+                            <!-- Engineering & Domain --><div class="sm:col-span-2 mt-4">
+                                <h3 class="font-bold text-2xl mb-4 text-text-dark text-primary-accent">Engineering & Core Competencies</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Reliability & Maintenance Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[93%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Real Time Sensor Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Embedded System & Microcontroller</p><div class="skill-bar-container"><div class="skill-bar w-[80%]"></div></div></div>
+                                    <div><p class="text-base font-medium mb-1 text-text-dark">Analytical Skill & Critical Thinking</p><div class="skill-bar-container"><div class="skill-bar w-[95%]"></div></div></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 5. Key Achievements Section -->
-                <section id="achievements" class="content-section hidden">
+                <!-- 5. Key Achievements Section --><section id="achievements" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="award">
                             <h2 class="section-title">Key Achievements</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- achievement cards use the secondary-accent background and primary-accent border -->
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-bold text-xl text-primary-dark mb-2">Shell Gen AI Capstone Project Winner</h3>
-                                <ul class="list-disc list-inside text-text-main text-base space-y-1 pl-2">
+                            <!-- Achievement Cards: Light background with strong blue border and shadow --><div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
+                                <h3 class="font-extrabold text-2xl text-text-dark mb-3">Shell Gen AI Capstone Project Winner</h3>
+                                <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
                                     <li>Developed a cutting-edge **Gen AI-based visual agent** for reliability and maintenance, significantly improving operational efficiency and predictive capabilities.</li>
                                 </ul>
                             </div>
-                            <div class="p-6 rounded-xl bg-secondary-accent border-l-4 border-primary-accent shadow-md">
-                                <h3 class="font-bold text-xl text-primary-dark mb-2">DIY Inspire Competition Winner (Generative AI)</h3>
-                                <ul class="list-disc list-inside text-text-main text-base space-y-1 pl-2">
+                            <div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
+                                <h3 class="font-extrabold text-2xl text-text-dark mb-3">DIY Inspire Competition Winner (Generative AI)</h3>
+                                <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
                                     <li>Won a Generative AI competition, excelling in rapid development using **Power Apps, Power Automate, and innovative prompt engineering in Co-Pilot**.</li>
                                 </ul>
                             </div>
@@ -659,41 +526,38 @@
                     </div>
                 </section>
                 
-                <!-- 6. Education Section -->
-                <section id="education" class="content-section hidden">
+                <!-- 6. Education Section --><section id="education" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="graduation">
-                            <h2 class="section-title">Education</h2>
+                            <h2 class="section-title">Education & Certifications</h2>
                         </div>
-                        <div class="space-y-4">
-                            <!-- Education item borders now match the primary accent -->
-                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
-                                <h3 class="text-xl font-bold text-primary-dark">Post Graduate Diploma in Embedded System Design</h3>
-                                <p class="text-lg text-primary-accent">Accel IT Academy, Chennai</p>
-                                <p class="text-sm text-text-muted mt-1">January 2014</p>
-                            </div>
-                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
-                                <h3 class="text-xl font-bold text-primary-dark">B.E. in Electronics and Communication</h3>
-                                <p class="text-lg text-primary-accent">Apollo Engineering College, Anna University, Chennai</p>
+                        <div class="space-y-6">
+                            <!-- Education items are clean white cards with a cyan ring --><div class="p-6 border-2 border-primary-accent/30 rounded-2xl bg-surface shadow-lg hover:ring-4 ring-primary-accent/20 transition duration-300">
+                                <h3 class="text-xl font-bold text-text-dark">B.E. in Electronics and Communication</h3>
+                                <p class="text-lg text-text-dark">Apollo Engineering College, Anna University, Chennai</p>
                                 <p class="text-sm text-text-muted mt-1">August 2010 – May 2014</p>
                             </div>
-                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
-                                <h3 class="text-xl font-bold text-primary-dark">Certified Automation Engineer</h3>
-                                <p class="text-lg text-primary-accent">First Logic Automation, Chennai</p>
+                            <div class="p-6 border-2 border-primary-accent/30 rounded-2xl bg-surface shadow-lg hover:ring-4 ring-primary-accent/20 transition duration-300">
+                                <h3 class="text-xl font-bold text-text-dark">Post Graduate Diploma in Embedded System Design</h3>
+                                <p class="text-lg text-text-dark">Accel IT Academy, Chennai</p>
+                                <p class="text-sm text-text-muted mt-1">January 2014</p>
+                            </div>
+                            <div class="p-6 border-2 border-primary-accent/30 rounded-2xl bg-surface shadow-lg hover:ring-4 ring-primary-accent/20 transition duration-300">
+                                <h3 class="text-xl font-bold text-text-dark">Certified Automation Engineer</h3>
+                                <p class="text-lg text-text-dark">First Logic Automation, Chennai</p>
                                 <p class="text-sm text-text-muted mt-1">2018</p>
                             </div>
-                            <div class="p-4 border border-primary-accent/50 rounded-lg shadow-sm">
-                                <h3 class="text-xl font-bold text-primary-dark">Python for Data Science (eDx)</h3>
-                                <p class="text-lg text-primary-accent">University of California, San Diego</p>
+                            <div class="p-6 border-2 border-primary-accent/30 rounded-2xl bg-surface shadow-lg hover:ring-4 ring-primary-accent/20 transition duration-300">
+                                <h3 class="text-xl font-bold text-text-dark">Python for Data Science (eDx)</h3>
+                                <p class="text-lg text-text-dark">University of California, San Diego</p>
                                 <p class="text-sm text-text-muted mt-1">2021</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Footer (Placed at the very bottom of the main content view) -->
-                <footer class="text-center text-text-muted text-sm mt-4 py-4 border-t border-gray-200">
-                    <p>&copy; 2025 Basilea Ruban. Built with a focus on Data, Reliability, and Digitalization.</p>
+                <!-- Footer (Placed at the very bottom of the main content view) --><footer class="text-center text-text-muted text-sm mt-12 py-6 border-t border-gray-200">
+                    <p>&copy; 2025 Basilea Ruban. Maintenance & Reliability Data Analyst Portfolio. Designed with Vibrant Cyan and Professional Blue accents.</p>
                 </footer>
             </div>
         </main>
