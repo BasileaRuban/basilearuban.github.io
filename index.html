@@ -153,21 +153,55 @@
             width: 0;
         }
 
-        /* Horizontal Timeline Item Styles */
+        /* --- Vertical Timeline Styles (Mobile-First / Single Column) --- */
+        
         .horizontal-timeline-container {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 2.5rem;
-            padding-bottom: 1.5rem;
-            overflow-x: auto;
+            display: block;
+            position: relative;
+            padding-left: 24px; /* Space for the line and markers */
+            padding-bottom: 0;
+            gap: 0; 
+            overflow-x: hidden; 
         }
+
+        /* Vertical Line (Default: Left-aligned) */
+        .horizontal-timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12px; /* Center the line */
+            width: 3px;
+            height: 100%;
+            background-color: #E5E7EB; 
+            border-radius: 9999px;
+            z-index: 5;
+        }
+
         .horizontal-timeline-item {
-            flex: 0 0 400px;
-            background-color: var(--tw-colors-surface);
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            margin-bottom: 2.5rem;
             padding: 2rem;
-            border-top: 5px solid var(--tw-colors-primary-accent); /* Teal accent border */
+            padding-left: 3rem; 
+            position: relative;
+            border-left: 5px solid var(--tw-colors-primary-accent); 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+            background-color: var(--tw-colors-surface);
+            z-index: 10;
+        }
+
+        /* Timeline dot/point (Default: Left aligned on line) */
+        .horizontal-timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 2rem; 
+            left: -10px; /* Position over the vertical line */
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--tw-colors-primary-accent); 
+            border: 4px solid var(--tw-colors-canvas-light); 
+            z-index: 15; 
+            box-shadow: 0 0 0 4px var(--tw-colors-surface);
         }
 
         /* Mobile specific adjustments: Sidebar always visible, but smaller/icon-only */
@@ -175,7 +209,6 @@
             #sidebar {
                 width: 100px; /* Reduced width for mobile */
                 padding: 1rem 0.5rem; /* Reduced padding */
-                /* The rest of the styling ensures it remains visible */
             }
             
             #sidebar .text-2xl, #sidebar .mt-12, #sidebar .text-xs {
@@ -194,9 +227,81 @@
             #main-content-view {
                 padding: 1rem;
             }
+        }
+        
+        /* --- Desktop Alternating Timeline Styles (lg breakpoint) --- */
+        @media (min-width: 1024px) {
             
+            /* Center the main vertical line */
+            .horizontal-timeline-container::before {
+                left: 50%; /* Center line */
+                margin-left: -1.5px; /* Adjust for line width */
+            }
+
             .horizontal-timeline-item {
-                flex: 0 0 85vw; /* Wider for better mobile view */
+                width: calc(50% - 30px); /* Half width minus margin/padding */
+                padding: 2.5rem; /* Standardize padding */
+                margin-bottom: 3.5rem;
+            }
+
+            /* Left-side items (Odd) */
+            .horizontal-timeline-item:nth-child(odd) {
+                float: left;
+                clear: both; /* Crucial for vertical stacking */
+                border-left: 5px solid var(--tw-colors-primary-accent);
+                border-right: none;
+            }
+
+            /* Right-side items (Even) */
+            .horizontal-timeline-item:nth-child(even) {
+                float: right;
+                clear: both; /* Crucial for vertical stacking */
+                border-left: none;
+                border-right: 5px solid var(--tw-colors-primary-accent);
+            }
+            
+            /* Clear floating elements after the container */
+            .horizontal-timeline-container::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+
+            /* Dot/Marker for Left Items (Odd) */
+            .horizontal-timeline-item:nth-child(odd)::before {
+                left: calc(100% + 5px); /* Position on the right edge of the card, on the center line */
+            }
+            
+            /* Dot/Marker for Right Items (Even) */
+            .horizontal-timeline-item:nth-child(even)::before {
+                left: -25px; /* Position on the left edge of the card, on the center line */
+            }
+
+            /* Add visual connector pointer for left items */
+            .horizontal-timeline-item:nth-child(odd)::after {
+                content: '';
+                position: absolute;
+                top: 2rem;
+                right: -14px;
+                border-style: solid;
+                border-width: 10px 0 10px 14px; /* Right pointing triangle */
+                border-color: transparent transparent transparent var(--tw-colors-surface);
+            }
+
+            /* Add visual connector pointer for right items */
+            .horizontal-timeline-item:nth-child(even)::after {
+                content: '';
+                position: absolute;
+                top: 2rem;
+                left: -14px;
+                border-style: solid;
+                border-width: 10px 14px 10px 0; /* Left pointing triangle */
+                border-color: transparent var(--tw-colors-surface) transparent transparent;
+            }
+
+            /* Ensure the dot border color is always correct on desktop */
+            .horizontal-timeline-item::before {
+                border-color: var(--tw-colors-surface); 
             }
         }
     </style>
@@ -385,22 +490,24 @@
                     </div>
                 </section>
 
-                <!-- 3. Professional Experience Section (Internal Horizontal Scroll retained for this section) -->
+                <!-- 3. Professional Experience Section (Now a Vertical Timeline) -->
                 <section id="experience" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="briefcase">
                             <h2 class="section-title">Professional Experience</h2>
                         </div>
-                        <p class="text-sm text-text-muted mb-4">Swipe/scroll horizontally to view all roles.</p>
+                        <p class="text-sm text-text-muted mb-4">A chronological view of my primary professional roles.</p>
+                        <!-- The CSS for this container now handles the alternating left/right layout on desktop (lg:), but remains a single column on mobile. -->
                         <div class="horizontal-timeline-container">
                             <div class="horizontal-timeline-item">
                                 <h3 class="text-2xl font-bold text-primary-dark mb-1">Digital Data and Reliability Engineer</h3>
                                 <p class="text-lg font-semibold text-primary-accent mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Feb 2024 – Apr 2025</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>**Spearheaded** reliability and maintenance data analysis and tool development for the facility.</li>
-                                    <li>Drove **production optimization** and digital transformation of planning and reporting processes.</li>
-                                    <li>Executed **realtime sensor data analysis** for predictive and prescriptive maintenance activities.</li>
+                                    <li>Led strategic initiatives in reliability and maintenance analytics, driving the development of digital tools to enhance operational efficiency across the facility.</li>
+                                    <li>Championed production optimization and spearheaded the digital transformation of planning and reporting workflows, resulting in improved transparency and agility.</li>
+                                    <li>Implemented real-time sensor data analysis to enable predictive and prescriptive maintenance, minimizing downtime and maximizing asset performance.</li>
+                                    <li>Successfully delivered a Proof of Concept (PoC) for Rel-AI, a Reliability AI agent built using Shell e, showcasing the potential of AI-driven insights in reliability engineering.</li>
                                 </ul>
                             </div>
 
@@ -409,10 +516,10 @@
                                 <p class="text-lg font-semibold text-primary-accent mb-1">Shell, Shell Business Operations, TAO Chennai</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jul 2019 – Present</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>Expert in maintenance and reliability data analysis, delivering innovative solutions to **optimize performance**.</li>
-                                    <li>Demonstrated mastery of the **Power Platform** tools (Power BI, Power Apps, Power Automate).</li>
-                                    <li>Advanced proficiency in **Python, Azure ML, Databricks, and Git** for data engineering pipelines.</li>
-                                    <li>Served as a DIY Coach for TAO, Chennai & Pearl GTL, Qatar, mentoring colleagues on digital tools.</li>
+                                    <li>**Experienced Maintenance & Reliability Data Analyst | Digital Transformation Advocate:** Proven expertise in maintenance and reliability data analysis, consistently delivering innovative solutions to **optimize asset performance** and streamline workflows. Adept at leveraging digital tools to drive operational efficiency and enhance decision-making.</li>
+                                    <li>Demonstrated mastery of the **Microsoft Power Platform** (Power BI, Power Apps, and Power Automate) to build scalable, user-friendly applications and automate complex processes.</li>
+                                    <li>Advanced proficiency in **Python, Azure Machine Learning, Databricks, and Git**, enabling the development of robust data engineering pipelines and predictive analytics models.</li>
+                                    <li>Serving as a **DIY Coach** for TAO, Chennai and Pearl GTL, Qatar for the past 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools to foster a culture of innovation and continuous improvement.</li>
                                 </ul>
                             </div>
 
@@ -421,21 +528,14 @@
                                 <p class="text-lg font-semibold text-primary-accent mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jun 2016 – Jul 2019</p>
                                 <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>Strategized and implemented **predictive and preventive maintenance** schedules to maximize machine uptime.</li>
-                                    <li>Diagnosed and resolved bottlenecks and breakdowns using **Root Cause Analysis (RCA)**.</li>
-                                    <li>Executed commissioning work, modifications, and major repairs, focusing on efficiency through fault-finding.</li>
+                                    <li>**Maintenance & Commissioning Specialist | Reliability-Focused Problem Solver:** Strategized and implemented **predictive and preventive maintenance** programs to enhance equipment reliability and maximize uptime.</li>
+                                    <li>Proficient in diagnosing and resolving operational bottlenecks and equipment failures using **Root Cause Analysis (RCA)** methodologies.</li>
+                                    <li>Led commissioning, modifications, and major repair activities, with a strong focus on fault-finding and efficiency improvement.</li>
+                                    <li>Possess hands-on experience across a wide range of **field instruments, analyzers, Distributed Control Systems (DCS), and Programmable Logic Controllers (PLC)**, ensuring seamless integration and optimal performance of control systems.</li>
                                 </ul>
                             </div>
-
-                            <div class="horizontal-timeline-item">
-                                <h3 class="text-2xl font-bold text-primary-dark mb-1">Electronics Engineer</h3>
-                                <p class="text-lg font-semibold text-primary-accent mb-1">SR Engineering Marine Technical Services, Chennai, India</p>
-                                <p class="text-sm text-text-muted mb-4 font-mono">Jun 2014 – Jun 2016</p>
-                                <ul class="list-disc list-inside text-text-main space-y-1 pl-2 text-sm">
-                                    <li>Designed and programmed advanced circuits and microcontrollers for specialized equipment.</li>
-                                    <li>Developed communication protocols like **I2C and Modbus** for Coast Guard and Navy ships.</li>
-                                </ul>
-                            </div>
+                            
+                            <!-- The 'Electronics Engineer' entry was previously removed. -->
                         </div>
                     </div>
                 </section>
