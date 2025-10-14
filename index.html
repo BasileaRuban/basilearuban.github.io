@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basilea Ruban - Maintenance and Reliability Data Analyst</title>
-    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind for custom colors and font --><script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configure Tailwind for custom colors and font -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -13,7 +17,7 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        // NEW VIBRANT & MODERN PALETTE: Electric Cyan & Professional Blue
+                        // VIBRANT & MODERN PALETTE: Electric Cyan & Professional Blue
                         'canvas-light': '#F7F7F7',      // Very slight off-white background
                         'surface': '#FFFFFF',           // Pure White for main cards
                         'primary-accent': '#06B6D4',    // Vibrant Electric Cyan (Tailwind cyan-500)
@@ -22,14 +26,16 @@
                         'text-muted': '#6B7280',        // Medium Gray for secondary text
                     },
                     boxShadow: {
-                        // Custom shadow for a modern, lifted effect, updated for blue
+                        // Custom shadow for a modern, lifted effect, using both accents
                         'vibrant-lg': '0 10px 25px -3px rgba(6, 182, 212, 0.2), 0 4px 10px -2px rgba(37, 99, 235, 0.15)',
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts - Inter --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* CRITICAL: Set the entire page to a fixed height with no overall scroll */
         html, body {
@@ -323,13 +329,18 @@
 </head>
 <body>
     
-    <!-- Main Application Container --><div id="app-container">
+    <!-- Main Application Container -->
+    <div id="app-container">
 
-        <!-- Left Sidebar Navigation --><nav id="sidebar" class="lg:static">
-            <!-- Sidebar Header --><h2 class="text-3xl font-extrabold mb-10 text-text-dark tracking-tighter">BASILEA RUBAN</h2>
+        <!-- Left Sidebar Navigation -->
+        <nav id="sidebar" class="lg:static">
+            <!-- Sidebar Header -->
+            <!-- The user's name remains the prominent title in the fixed sidebar -->
+            <h2 class="text-3xl font-extrabold mb-10 text-text-dark tracking-tighter">BASILEA RUBAN</h2>
             
             <div class="space-y-2">
-                <!-- Navigation Links --><div id="nav-summary" data-sidebar-icon="home" onclick="showSection('summary')" class="nav-link">
+                <!-- Navigation Links -->
+                <div id="nav-summary" data-sidebar-icon="home" onclick="showSection('summary')" class="nav-link">
                     <span>Summary</span>
                 </div>
                 <div id="nav-domain-expertise" data-sidebar-icon="cpu" onclick="showSection('domain-expertise')" class="nav-link">
@@ -349,7 +360,8 @@
                 </div>
             </div>
 
-            <!-- Fixed Contact Info at bottom of sidebar --><div class="mt-16 pt-8 border-t border-gray-100 text-sm opacity-90 space-y-3">
+            <!-- Fixed Contact Info at bottom of sidebar -->
+            <div class="mt-16 pt-8 border-t border-gray-100 text-sm opacity-90 space-y-3">
                 <p class="font-bold text-base text-text-dark mb-2">Connect</p>
                 <div class="flex items-center gap-3 text-text-muted">
                     <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
@@ -366,16 +378,13 @@
             </div>
         </nav>
 
-        <!-- Main Content Viewport --><main id="main-content-view">
+        <!-- Main Content Viewport -->
+        <main id="main-content-view">
             <div class="container max-w-6xl mx-auto">
-                <!-- Header Card (Uses Secondary Highlight color for background for strong visual pop) --><header class="card bg-secondary-highlight text-surface py-12 rounded-3xl shadow-2xl shadow-secondary-highlight/30 mb-10 border-none transition-none">
-                    <div class="relative z-10 text-center">
-                        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-2 tracking-tight drop-shadow-lg">BASILEA RUBAN</h1>
-                        <p class="text-xl sm:text-2xl font-light opacity-90 tracking-wider">MAINTENANCE & RELIABILITY DATA ANALYST</p>
-                    </div>
-                </header>
+                <!-- REMOVED: Header Card (h1/h2 title) has been removed as requested. -->
 
-                <!-- 1. Professional Summary Section --><section id="summary" class="content-section">
+                <!-- 1. Professional Summary Section -->
+                <section id="summary" class="content-section">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="home">
                             <h2 class="section-title">Professional Summary</h2>
@@ -386,13 +395,15 @@
                     </div>
                 </section>
 
-                <!-- 2. Domain Expertise Section --><section id="domain-expertise" class="content-section hidden">
+                <!-- 2. Domain Expertise Section -->
+                <section id="domain-expertise" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="cpu">
                             <h2 class="section-title">Domain Expertise</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Expertise Cards: White background, primary-accent border on top, and dynamic shadow --><div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                            <!-- Expertise Cards: White background, primary-accent border on top, and dynamic shadow -->
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
                                 <h3 class="font-bold text-xl text-text-dark mb-1">Reliability & Maintenance Analytics</h3>
                                 <p class="text-sm text-text-muted">Expert in leveraging data to optimize maintenance strategies and ensure operational excellence.</p>
                             </div>
@@ -416,7 +427,8 @@
                     </div>
                 </section>
 
-                <!-- 3. Professional Experience Section (Vertical Timeline) --><section id="experience" class="content-section hidden">
+                <!-- 3. Professional Experience Section (Vertical Timeline) -->
+                <section id="experience" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="briefcase">
                             <h2 class="section-title">Professional Experience</h2>
@@ -425,7 +437,8 @@
                         
                         <div class="horizontal-timeline-container">
                             
-                            <!-- 1. Shell Digital Data and Reliability Engineer (2024 - 2025) --><div class="horizontal-timeline-item">
+                            <!-- 1. Shell Digital Data and Reliability Engineer (2024 - 2025) -->
+                            <div class="horizontal-timeline-item">
                                 <span class="absolute -left-20 top-6 text-xl font-extrabold text-secondary-highlight hidden lg:block">2024</span>
                                 <h3 class="text-2xl font-bold text-text-dark mb-1">Maintenance and Reliability Data Analyst</h3>
                                 <p class="text-lg font-semibold text-text-dark mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
@@ -438,7 +451,8 @@
                                 </ul>
                             </div>
 
-                            <!-- 2. Shell Senior Process Data Engineer (2019 - Present) --><div class="horizontal-timeline-item">
+                            <!-- 2. Shell Senior Process Data Engineer (2019 - Present) -->
+                            <div class="horizontal-timeline-item">
                                 <span class="absolute -left-20 top-6 text-xl font-extrabold text-secondary-highlight hidden lg:block">2019</span>
                                 <h3 class="text-2xl font-bold text-text-dark mb-1">Senior Process Data Engineer</h3>
                                 <p class="text-lg font-semibold text-text-dark mb-1">Shell, Shell Business Operations, TAO Chennai</p>
@@ -451,7 +465,8 @@
                                 </ul>
                             </div>
 
-                            <!-- 3. TNPL Senior Instrumentation Engineer (2016 - 2019) --><div class="horizontal-timeline-item">
+                            <!-- 3. TNPL Senior Instrumentation Engineer (2016 - 2019) -->
+                            <div class="horizontal-timeline-item">
                                 <span class="absolute -left-20 top-6 text-xl font-extrabold text-secondary-highlight hidden lg:block">2016</span>
                                 <h3 class="text-2xl font-bold text-text-dark mb-1">Senior Instrumentation Engineer</h3>
                                 <p class="text-lg font-semibold text-text-dark mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
@@ -467,13 +482,15 @@
                     </div>
                 </section>
 
-                <!-- 4. Technical Skills Section --><section id="skills" class="content-section hidden">
+                <!-- 4. Technical Skills Section -->
+                <section id="skills" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="tool">
                             <h2 class="section-title">Technical Skills & Proficiency</h2>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-                            <!-- Data & AI --><div>
+                            <!-- Data & AI -->
+                            <div>
                                 <h3 class="font-bold text-2xl mb-4 text-text-dark text-primary-accent">Data & AI</h3>
                                 <div class="space-y-5">
                                     <div><p class="text-base font-medium mb-1 text-text-dark">Python</p><div class="skill-bar-container"><div class="skill-bar w-[95%]"></div></div></div>
@@ -482,7 +499,8 @@
                                     <div><p class="text-base font-medium mb-1 text-text-dark">Time Series & Statistical Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[88%]"></div></div></div>
                                 </div>
                             </div>
-                            <!-- Platforms & Tools --><div>
+                            <!-- Platforms & Tools -->
+                            <div>
                                 <h3 class="font-bold text-2xl mb-4 text-text-dark text-primary-accent">Platforms & Tools</h3>
                                 <div class="space-y-5">
                                     <div><p class="text-base font-medium mb-1 text-text-dark">SQL</p><div class="skill-bar-container"><div class="skill-bar w-[90%]"></div></div></div>
@@ -491,7 +509,8 @@
                                     <div><p class="text-base font-medium mb-1 text-text-dark">SAP, Databricks, Git</p><div class="skill-bar-container"><div class="skill-bar w-[78%]"></div></div></div>
                                 </div>
                             </div>
-                            <!-- Engineering & Domain --><div class="sm:col-span-2 mt-4">
+                            <!-- Engineering & Domain -->
+                            <div class="sm:col-span-2 mt-4">
                                 <h3 class="font-bold text-2xl mb-4 text-text-dark text-primary-accent">Engineering & Core Competencies</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
                                     <div><p class="text-base font-medium mb-1 text-text-dark">Reliability & Maintenance Data Analysis</p><div class="skill-bar-container"><div class="skill-bar w-[93%]"></div></div></div>
@@ -504,13 +523,15 @@
                     </div>
                 </section>
 
-                <!-- 5. Key Achievements Section --><section id="achievements" class="content-section hidden">
+                <!-- 5. Key Achievements Section -->
+                <section id="achievements" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="award">
                             <h2 class="section-title">Key Achievements</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Achievement Cards: Light background with strong blue border and shadow --><div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
+                            <!-- Achievement Cards: Light background with strong blue border and shadow -->
+                            <div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
                                 <h3 class="font-extrabold text-2xl text-text-dark mb-3">Shell Gen AI Capstone Project Winner</h3>
                                 <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
                                     <li>Developed a cutting-edge **Gen AI-based visual agent** for reliability and maintenance, significantly improving operational efficiency and predictive capabilities.</li>
@@ -526,13 +547,15 @@
                     </div>
                 </section>
                 
-                <!-- 6. Education Section --><section id="education" class="content-section hidden">
+                <!-- 6. Education Section -->
+                <section id="education" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="graduation">
                             <h2 class="section-title">Education & Certifications</h2>
                         </div>
                         <div class="space-y-6">
-                            <!-- Education items are clean white cards with a cyan ring --><div class="p-6 border-2 border-primary-accent/30 rounded-2xl bg-surface shadow-lg hover:ring-4 ring-primary-accent/20 transition duration-300">
+                            <!-- Education items are clean white cards with a cyan ring -->
+                            <div class="p-6 border-2 border-primary-accent/30 rounded-2xl bg-surface shadow-lg hover:ring-4 ring-primary-accent/20 transition duration-300">
                                 <h3 class="text-xl font-bold text-text-dark">B.E. in Electronics and Communication</h3>
                                 <p class="text-lg text-text-dark">Apollo Engineering College, Anna University, Chennai</p>
                                 <p class="text-sm text-text-muted mt-1">August 2010 – May 2014</p>
@@ -556,7 +579,8 @@
                     </div>
                 </section>
 
-                <!-- Footer (Placed at the very bottom of the main content view) --><footer class="text-center text-text-muted text-sm mt-12 py-6 border-t border-gray-200">
+                <!-- Footer (Placed at the very bottom of the main content view) -->
+                <footer class="text-center text-text-muted text-sm mt-12 py-6 border-t border-gray-200">
                     <p>&copy; 2025 Basilea Ruban. Maintenance & Reliability Data Analyst Portfolio. Designed with Vibrant Cyan and Professional Blue accents.</p>
                 </footer>
             </div>
