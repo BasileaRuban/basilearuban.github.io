@@ -85,6 +85,10 @@
             padding: 3rem;
             margin-bottom: 2.5rem;
             transition: all 0.3s ease-in-out;
+            /* Added max-width to the card itself to prevent excessive width on huge monitors */
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .card:hover {
             transform: translateY(-3px);
@@ -370,7 +374,7 @@
             <div class="mt-16 pt-8 border-t border-gray-100 text-sm opacity-90 space-y-3">
                 <p class="font-bold text-base text-text-dark mb-2">Connect</p>
                 <div class="flex items-center gap-3 text-text-muted">
-                    <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 1 0 0 1 1 1v2a1 1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
+                    <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 1 0 0 1 1 1v2a1 1 1 0 0 1-2 0V3a1 1 1 0 0 1 1-1zM7.5 7.5a1 1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 1 0 0 1 1 1v2a1 1 1 0 0 1-2 0v-2a1 1 1 0 0 1 1-1z"/></svg>
                     <span>+91 73580 14327</span>
                 </div>
                 <div class="flex items-center gap-3 text-text-muted">
@@ -386,7 +390,7 @@
 
         <!-- Main Content Viewport -->
         <main id="main-content-view">
-            <div class="container max-w-6xl mx-auto">
+            <!-- REMOVED: <div class="container max-w-6xl mx-auto"> to allow content to stretch -->
 
                 <!-- 1. Professional Summary Section -->
                 <section id="summary" class="content-section">
@@ -650,10 +654,10 @@
                 </section>
 
                 <!-- Footer (Placed at the very bottom of the main content view) -->
-                <footer class="text-center text-text-muted text-sm mt-12 py-6 border-t border-gray-200">
+                <footer class="text-center text-text-muted text-sm mt-12 py-6 border-t border-gray-200 max-w-6xl mx-auto">
                     <p>&copy; 2025 Basilea Ruban. Maintenance & Reliability Data Analyst Portfolio. Designed with Vibrant Cyan and Professional Blue accents.</p>
                 </footer>
-            </div>
+            <!-- END REMOVED: </div> -->
         </main>
     </div>
 </body>
