@@ -46,6 +46,12 @@
             color: var(--tw-colors-text-dark); 
             line-height: 1.6;
         }
+        
+        /* Ensure strong text is properly bolded in case of fallback */
+        strong {
+            font-weight: 700;
+            color: var(--tw-colors-text-dark);
+        }
 
         /* Main app container takes full height and uses flex for layout */
         #app-container {
@@ -57,7 +63,7 @@
         #sidebar {
             width: 300px; /* Slightly wider sidebar */
             flex-shrink: 0;
-            background-color: var(--tw-colors-surface); /* Pure White */
+            background-color: var(--tw-colors-surface); /* Pure White for main cards */
             padding: 3rem 1.5rem;
             box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05); 
             overflow-y: auto; 
@@ -211,7 +217,7 @@
                 width: 80px; 
                 padding: 1rem 0.25rem; 
             }
-            #sidebar h2, #sidebar .mt-12, #sidebar .text-xs {
+            #sidebar h2, #sidebar .mt-16, #sidebar .text-sm {
                 display: none; 
             }
             .nav-link {
@@ -252,7 +258,7 @@
                 briefcase: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
                 award: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.46 16.92-2.58 1.44a1 1 0 0 1-1.76 0L8.54 16.92a1 1 0 0 0-.42-1.09l-3.3-1.85a1 1 0 0 1 0-1.8l3.3-1.85a1 1 0 0 0-.42-1.09L11.12 7.08a1 1 0 0 1 1.76 0l2.58 1.44a1 1 0 0 0 .42 1.09l3.3 1.85a1 1 0 0 1 0 1.8l-3.3 1.85a1 1 0 0 0-.42 1.09z"/><path d="M12 2v2"/><path d="M12 20v2"/></svg>`,
                 tool: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 1.7a2.82 2.82 0 0 1 3.99 3.99L18 9.5 14.5 6l3-4.3zM12.8 13.2l-1.3-1.3a1.5 1.5 0 0 0-2.12 0L6 15.7V19h3.3l5.55-5.55a1.5 1.5 0 0 0 0-2.12z"/></svg>`,
-                graduation: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6m0 0h-4m4 0-4-4m4 4-4 4M5 10v6m0 0H9m-4 0 4-4m-4 4 4 4m13-10-6-3-6 3-6-3-4 2 12 6 12-6-4-2zM5 10l-4 2 12 6 12-6-4-2z"/></svg>`,
+                graduation: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6m0 0h-4m4 0-4-4m4 4-4 4M5 10v6m0 0H9m-4 0 4-4m-4 4 4 4m13-10-6-3-6 3-6 3-4 2 12 6 12-6-4-2zM5 10l-4 2 12 6 12-6-4-2z"/></svg>`,
                 cpu: `<svg class="${classes}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M15 9h2m-2 2h2m-2 2h2m-2 2h2m-6-8v2m0 2v2m0 2v2m-2 0v-2m-2 0v-2m-2 0v-2m2-2v-2m2 0v-2m2 0v-2m2 0v-2m2 0v-2m-2 0v-2m-2 0v-2m-2 0v-2"/></svg>`,
             };
             return icons[name] || '';
@@ -364,7 +370,7 @@
             <div class="mt-16 pt-8 border-t border-gray-100 text-sm opacity-90 space-y-3">
                 <p class="font-bold text-base text-text-dark mb-2">Connect</p>
                 <div class="flex items-center gap-3 text-text-muted">
-                    <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
+                    <svg class="w-5 h-5 text-primary-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2 2h-1c-3.15 0-6.07-1.12-8.38-3.43S4.12 11.15 4.12 8V7a2 2 0 0 1 2-2h3"/><path d="M12 2a1 1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zM7.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM16.5 7.5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V8.5a1 1 0 0 1 1-1zM12 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/></svg>
                     <span>+91 73580 14327</span>
                 </div>
                 <div class="flex items-center gap-3 text-text-muted">
@@ -381,7 +387,6 @@
         <!-- Main Content Viewport -->
         <main id="main-content-view">
             <div class="container max-w-6xl mx-auto">
-                <!-- REMOVED: Header Card (h1/h2 title) has been removed as requested. -->
 
                 <!-- 1. Professional Summary Section -->
                 <section id="summary" class="content-section">
@@ -389,39 +394,67 @@
                         <div class="section-title-wrapper" data-icon="home">
                             <h2 class="section-title">Professional Summary</h2>
                         </div>
-                        <p class="text-lg text-text-dark leading-relaxed">
-                            Experienced and innovation-driven professional with over 10 years of experience in optimizing maintenance strategies, digitalizing industrial processes, and improving equipment reliability across complex plant operations. Proven expertise in **predictive and preventive maintenance**, fault diagnostics, and commissioning, backed by strong analytical and problem-solving capabilities. Specialized in driving digital transformation through automation of maintenance KPIs and **real-time sensor data analysis**, enabling smarter decision-making and operational efficiency. Skilled in implementing AI, machine learning, and statistical models to enhance reliability reporting and asset performance. Proficient in **Microsoft Power Platform** and **Python**, developing intelligent solutions tailored to maintenance and reliability needs. Passionate about leveraging data to deliver actionable insights and sustainable improvements.
-                        </p>
+                        
+                        <!-- Updated Professional Summary with three paragraphs, using <strong> tags for emphasis -->
+                        <div class="text-lg text-text-dark leading-relaxed space-y-5">
+                            <p>
+                                Experienced and innovation-driven professional with over 10 years of experience in <strong>optimizing maintenance strategies</strong>, <strong>digitalizing industrial processes</strong>, and improving equipment reliability across complex plant operations. I possess proven expertise in fault diagnostics, commissioning, and ensuring operational excellence, backed by strong analytical and problem-solving capabilities.
+                            </p>
+                            <p>
+                                My specialization lies in driving <strong>digital transformation</strong>, particularly through the automation of maintenance KPIs and leveraging <strong>real-time sensor data analysis</strong>. I apply this knowledge to enable smarter decision-making and operational efficiency, with core competence in <strong>predictive and preventive maintenance</strong> methodologies.
+                            </p>
+                            <p>
+                                I am skilled in implementing <strong>AI, machine learning, and statistical models</strong> to enhance reliability reporting and asset performance. I am proficient in key technologies like <strong>Microsoft Power Platform</strong> and <strong>Python</strong>, using them to develop intelligent, tailored solutions that deliver actionable insights and sustainable improvements in maintenance and reliability.
+                            </p>
+                        </div>
+                        <!-- End Updated Professional Summary -->
+                        
                     </div>
                 </section>
 
-                <!-- 2. Domain Expertise Section -->
+                <!-- 2. Domain Expertise Section (UPDATED) -->
                 <section id="domain-expertise" class="content-section hidden">
                     <div class="card">
                         <div class="section-title-wrapper" data-icon="cpu">
                             <h2 class="section-title">Domain Expertise</h2>
                         </div>
+                        <!-- Updated grid layout to 2 columns on mid-size, 3 columns on large -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Expertise Cards: White background, primary-accent border on top, and dynamic shadow -->
+                            
+                            <!-- 1. Reliability & Maintenance Analytics -->
                             <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
-                                <h3 class="font-bold text-xl text-text-dark mb-1">Reliability & Maintenance Analytics</h3>
-                                <p class="text-sm text-text-muted">Expert in leveraging data to optimize maintenance strategies and ensure operational excellence.</p>
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Reliability & Maintenance Strategy</h3>
+                                <p class="text-sm text-text-muted">Expert in optimizing maintenance strategies (RCM, RBI) and leveraging data to ensure operational excellence and maximal asset uptime.</p>
                             </div>
+                            
+                            <!-- 2. AI Application Development & Python SME (UPDATED CARD) -->
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">AI Application Development & Python SME</h3>
+                                <p class="text-sm text-text-muted">Acting as the Subject Matter Expert (SME) to architect, develop, and integrate Python-based AI/ML applications. Proficiently leveraging Azure and Databricks for robust model operationalization in real-time industrial settings.</p>
+                            </div>
+
+                            <!-- 3. Real-Time Sensor Data Analysis -->
                             <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
                                 <h3 class="font-bold text-xl text-text-dark mb-1">Real-Time Sensor Data Analysis</h3>
-                                <p class="text-sm text-text-muted">Skilled in analyzing live sensor data for predictive and prescriptive maintenance in industrial settings.</p>
+                                <p class="text-sm text-text-muted">Skilled in analyzing live, high-frequency industrial sensor data for predictive and prescriptive maintenance triggers in harsh environments.</p>
                             </div>
-                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
-                                <h3 class="font-bold text-xl text-text-dark mb-1">Oil and Gas Field Instrumentation</h3>
-                                <p class="text-sm text-text-muted">Extensive experience with instrumentation in oil and gas environments, including green and brownfield projects.</p>
-                            </div>
+                            
+                            <!-- 4. Microsoft Power Platform & Digitalization -->
                             <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
                                 <h3 class="font-bold text-xl text-text-dark mb-1">Microsoft Power Platform & AI</h3>
-                                <p class="text-sm text-text-muted">Proficient in Power BI, Power Apps, Power Automate, and Copilot Studio for developing robust business solutions.</p>
+                                <p class="text-sm text-text-muted">Proficient in Power BI, Power Apps, Power Automate, and Copilot Studio for developing robust business solutions and automating KPIs.</p>
                             </div>
+                            
+                            <!-- 5. Oil and Gas Field Instrumentation -->
+                            <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
+                                <h3 class="font-bold text-xl text-text-dark mb-1">Oil and Gas Field Instrumentation</h3>
+                                <p class="text-sm text-text-muted">Extensive experience with instrumentation (DCS, PLC, valves, transmitters) in oil and gas environments, including commissioning and diagnostics.</p>
+                            </div>
+                            
+                            <!-- 6. Data Storytelling & Visualization -->
                             <div class="p-6 rounded-2xl bg-surface border-t-4 border-primary-accent shadow-lg transition duration-300 hover:shadow-cyan-400/30">
                                 <h3 class="font-bold text-xl text-text-dark mb-1">Data Storytelling & Visualization</h3>
-                                <p class="text-sm text-text-muted">Transforming complex data into compelling narratives and actionable insights using advanced visualization techniques.</p>
+                                <p class="text-sm text-muted">Transforming complex analytical results into clear, compelling narratives and actionable dashboards using advanced visualization.</p>
                             </div>
                         </div>
                     </div>
@@ -444,10 +477,10 @@
                                 <p class="text-lg font-semibold text-text-dark mb-1">Shell, A/S Norkse Shell, Nyhamna, Norway</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Feb 2024 – Apr 2025</p>
                                 <ul class="list-disc list-inside text-text-dark space-y-2 pl-2 text-base">
-                                    <li>Led strategic initiatives in reliability and maintenance analytics, driving the development of **digital tools** to enhance operational efficiency across the facility.</li>
+                                    <li>Led strategic initiatives in reliability and maintenance analytics, driving the development of <strong>digital tools</strong> to enhance operational efficiency across the facility.</li>
                                     <li>Championed production optimization and spearheaded the digital transformation of planning and reporting workflows, resulting in improved transparency and agility.</li>
-                                    <li>Implemented **real-time sensor data analysis** to enable predictive and prescriptive maintenance, minimizing downtime and maximizing asset performance.</li>
-                                    <li>Successfully delivered a **Proof of Concept (PoC) for Rel-AI**, a Reliability AI agent, showcasing the potential of AI-driven insights in reliability engineering.</li>
+                                    <li>Implemented <strong>real-time sensor data analysis</strong> to enable predictive and prescriptive maintenance, minimizing downtime and maximizing asset performance.</li>
+                                    <li>Successfully delivered a <strong>Proof of Concept (PoC) for Rel-AI</strong>, a Reliability AI agent, showcasing the potential of AI-driven insights in reliability engineering.</li>
                                 </ul>
                             </div>
 
@@ -458,10 +491,10 @@
                                 <p class="text-lg font-semibold text-text-dark mb-1">Shell, Shell Business Operations, TAO Chennai</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jul 2019 – Present</p>
                                 <ul class="list-disc list-inside text-text-dark space-y-2 pl-2 text-base">
-                                    <li>Expert in **Maintenance & Reliability Data Analysis** and **Digital Transformation**, delivering innovative solutions to optimize asset performance and streamline workflows.</li>
-                                    <li>Demonstrated mastery of the **Microsoft Power Platform** (Power BI, Power Apps, and Power Automate) to build scalable, user-friendly applications and automate complex processes.</li>
-                                    <li>Advanced proficiency in **Python, Azure Machine Learning, Databricks, and Git**, enabling the development of robust data engineering pipelines and predictive analytics models.</li>
-                                    <li>Served as a **DIY Coach** for TAO, Chennai and Pearl GTL, Qatar for 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools.</li>
+                                    <li>Expert in <strong>Maintenance & Reliability Data Analysis</strong> and <strong>Digital Transformation</strong>, delivering innovative solutions to optimize asset performance and streamline workflows.</li>
+                                    <li>Demonstrated mastery of the <strong>Microsoft Power Platform</strong> (Power BI, Power Apps, and Power Automate) to build scalable, user-friendly applications and automate complex processes.</li>
+                                    <li>Advanced proficiency in <strong>Python, Azure Machine Learning, Databricks, and Git</strong>, enabling the development of robust data engineering pipelines and predictive analytics models.</li>
+                                    <li>Served as a <strong>DIY Coach</strong> for TAO, Chennai and Pearl GTL, Qatar for 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools.</li>
                                 </ul>
                             </div>
 
@@ -472,10 +505,10 @@
                                 <p class="text-lg font-semibold text-text-dark mb-1">Tamil Nadu Petroproducts Limited, Chennai, India</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jun 2016 – Jul 2019</p>
                                 <ul class="list-disc list-inside text-text-dark space-y-2 pl-2 text-base">
-                                    <li>Strategized and implemented **predictive and preventive maintenance** programs to enhance equipment reliability and maximize uptime.</li>
-                                    <li>Proficient in diagnosing and resolving operational bottlenecks and equipment failures using **Root Cause Analysis (RCA)** methodologies.</li>
+                                    <li>Strategized and implemented <strong>predictive and preventive maintenance</strong> programs to enhance equipment reliability and maximize uptime.</li>
+                                    <li>Proficient in diagnosing and resolving operational bottlenecks and equipment failures using <strong>Root Cause Analysis (RCA)</strong> methodologies.</li>
                                     <li>Led commissioning, modifications, and major repair activities, with a strong focus on fault-finding and efficiency improvement.</li>
-                                    <li>Possess hands-on experience across a wide range of **field instruments, DCS, and PLC** control systems.</li>
+                                    <li>Possess hands-on experience across a wide range of <strong>field instruments, DCS, and PLC</strong> control systems.</li>
                                 </ul>
                             </div>
                         </div>
@@ -530,19 +563,39 @@
                             <h2 class="section-title">Key Achievements</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Achievement Cards: Light background with strong blue border and shadow -->
+                            
+                            <!-- Achievement 1: Shell Gen AI Capstone Project Winner -->
                             <div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
                                 <h3 class="font-extrabold text-2xl text-text-dark mb-3">Shell Gen AI Capstone Project Winner</h3>
                                 <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
-                                    <li>Developed a cutting-edge **Gen AI-based visual agent** for reliability and maintenance, significantly improving operational efficiency and predictive capabilities.</li>
+                                    <li>Developed a cutting-edge <strong>Gen AI-based visual agent</strong> for reliability and maintenance, significantly improving operational efficiency and predictive capabilities.</li>
                                 </ul>
                             </div>
+                            
+                            <!-- Achievement 2: DIY Inspire Competition Winner (Generative AI) -->
                             <div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
                                 <h3 class="font-extrabold text-2xl text-text-dark mb-3">DIY Inspire Competition Winner (Generative AI)</h3>
                                 <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
-                                    <li>Won a Generative AI competition, excelling in rapid development using **Power Apps, Power Automate, and innovative prompt engineering in Co-Pilot**.</li>
+                                    <li>Won a Generative AI competition, excelling in rapid development using <strong>Power Apps, Power Automate, and innovative prompt engineering in Co-Pilot</strong>.</li>
                                 </ul>
                             </div>
+
+                            <!-- Achievement 3: DIY Hero Finalist (2023) - Pearl GTL (NEW) -->
+                            <div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
+                                <h3 class="font-extrabold text-2xl text-text-dark mb-3">DIY Hero Finalist (2023) - Pearl GTL Reliability Tool</h3>
+                                <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
+                                    <li>Finalist for the development of a comprehensive <strong>Reliability analysis and tool</strong>, including a <strong>Digital repository</strong> for Pearl GTL in Qatar.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Achievement 4: DIY Hero Finalist (2025) - Norway Production Reporting (NEW) -->
+                            <div class="p-6 rounded-2xl bg-surface border-l-8 border-secondary-highlight shadow-xl transition duration-300 hover:shadow-blue-400/40">
+                                <h3 class="font-extrabold text-2xl text-text-dark mb-3">DIY Hero Finalist (2025) - Norway Production Reporting</h3>
+                                <ul class="list-disc list-inside text-text-dark text-base space-y-1 pl-2">
+                                    <li>Finalist for the Norway <strong>production reporting tool</strong>, successfully integrating <strong>IPSC (Integrated Production Scheduling and Capacity)</strong> and latest estimates for forecasting.</li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </section>
