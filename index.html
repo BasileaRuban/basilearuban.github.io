@@ -217,14 +217,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            /* Dark, highly opaque overlay */
+            background-color: rgba(0, 0, 0, 0.8);
             display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
             z-index: 100;
         }
         .modal-content {
-            background-color: var(--tw-colors-surface);
+            /* FIX: Explicitly set background to solid white to guarantee no transparency */
+            background-color: #FFFFFF;
             border-radius: 2rem;
             padding: 2.5rem;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
@@ -234,6 +236,8 @@
             overflow-y: auto;
             position: relative;
             animation: fadeIn 0.3s ease-out;
+            /* Ensure maximum opaqueness */
+            opacity: 1;
         }
 
         .close-button {
@@ -413,7 +417,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
             
-            <h2 class="text-4xl font-extrabold text-primary-accent mb-6 border-b pb-3 border-gray-100">Digital Reliability & AI Project Impact</h2>
+            <h2 class="text-4xl font-extrabold text-primary-accent mb-6 border-b pb-3 border-gray-100">Detailed Project Portfolio and Business Impact</h2>
             
             <!-- AI & ML Projects Section -->
             <div class="mb-8">
@@ -422,27 +426,24 @@
                     <!-- Project 1: Rel Ai -->
                     <div class="p-4 bg-canvas-light rounded-xl shadow-inner">
                         <h4 class="font-semibold text-xl text-secondary-highlight mb-1">Rel Ai: Reliability and Maintenance Visual and Analysis Agent</h4>
-                        <!-- MODIFIED TEXT: Removed bolding and fixed grammar/clarity -->
                         <p class="text-text-muted text-base leading-relaxed">Agent developed for the Norway Nyhamna asset using Streamlit and the Shell E API. The Proof of Concept (POC) was successfully completed and recognized with a Capstone Project Award.</p>
                     </div>
                     <!-- Project 2: Failure Mode Analysis agent -->
                     <div class="p-4 bg-canvas-light rounded-xl shadow-inner">
                         <h4 class="font-semibold text-xl text-secondary-highlight mb-1">Failure Mode Analysis Agent</h4>
-                        <!-- MODIFIED TEXT: Removed bolding and fixed grammar/clarity -->
                         <p class="text-text-muted text-base leading-relaxed">Agent developed to support global digital reliability initiatives using Co-Pilot Studio and Agent Flow. It is currently in the deployment phase and scheduled to be rolled out by the end of this year.</p>
                     </div>
                     <!-- Project 3: Intelecy (No Code Industrial AI tool) -->
                     <div class="p-4 bg-canvas-light rounded-xl shadow-inner">
                         <h4 class="font-semibold text-xl text-secondary-highlight mb-1">Intelecy (No Code Industrial AI Tool) Integration</h4>
-                        <!-- MODIFIED TEXT: Removed bolding and fixed grammar/clarity -->
                         <p class="text-text-muted text-base leading-relaxed">For the Norway Nyhamna asset, I completed the complete integration and connection of the Intelecy tool with real-time streaming data (SSIP), and successfully created a Machine Learning model for Compressor Seal Failure Prediction.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Overall Benefit Delivered Section (Content remains unchanged from last update) -->
-            <div>
-                <h3 class="text-2xl font-bold text-text-dark mb-4 border-l-4 border-secondary-highlight pl-3">Overall Benefit Delivered (USD)</h3>
+            <!-- Overall Benefit Delivered Section - UPDATED TITLE -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-text-dark mb-4 border-l-4 border-secondary-highlight pl-3">Overall Benefit Delivered (USD) for the asset (Registered and closed in FIT4)</h3>
                 <div class="space-y-3">
                     
                     <!-- Dynamic List of Financial Impacts -->
@@ -450,9 +451,10 @@
                         <span class="text-text-dark font-medium">2020 - QSGTL Reliability Dashboard's</span>
                         <span class="text-green-600 font-extrabold">0.9 M USD</span>
                     </div>
+                    <!-- QSGTL RPI Tool (11.2 M USD) - Confirmed from earlier step -->
                     <div class="flex justify-between items-center text-lg border-b border-gray-100 pb-2">
                         <span class="text-text-dark font-medium">2021 - QSGTL RPI Tool</span>
-                        <span class="text-green-600 font-extrabold">1.2 M USD</span>
+                        <span class="text-green-600 font-extrabold">11.2 M USD</span>
                     </div>
                     <div class="flex justify-between items-center text-lg border-b border-gray-100 pb-2">
                         <span class="text-text-dark font-medium">2021 - WPIP Entry Registry</span>
@@ -471,28 +473,69 @@
                         <span class="text-green-600 font-extrabold">7.4 M USD</span>
                     </div>
                     
-                    <!-- REMAINS: 2023 - Living Program Report - In progress (Amber) -->
+                    <!-- Living Program Report (Completed) - Confirmed from earlier step -->
                     <div class="flex justify-between items-center text-lg border-b border-gray-100 pb-2">
                         <span class="text-text-dark font-medium">2023 - Living Program Report</span>
-                        <span class="text-amber-600 font-extrabold">2 M USD - In progress</span>
+                        <span class="text-green-600 font-extrabold">2 M USD</span>
                     </div>
                     
-                    <!-- REMAINS: 2023 React Capability - Closed/Delivered (Green) -->
                     <div class="flex justify-between items-center text-lg border-b border-gray-100 pb-2">
                         <span class="text-text-dark font-medium">2023 - React Capability</span>
-                        <span class="text-green-600 font-extrabold">33 M USD</span>
+                        <span class="text-amber-600 font-extrabold">33 M USD - In progress</span>
                     </div>
 
+                    <!-- UPDATED: MRU Filter bed Changeout Catalyst Prediction value changed to 9.7 M USD -->
                     <div class="flex justify-between items-center text-lg border-b border-gray-100 pb-2">
-                        <span class="text-text-dark font-medium">2025 - NRU Filter bed Catalyst Prediction</span>
-                        <span class="text-green-600 font-extrabold">8 M USD</span>
+                        <span class="text-text-dark font-medium">2025 - MRU Filter bed Changeout Catalyst Prediction</span>
+                        <span class="text-green-600 font-extrabold">9.7 M USD</span>
                     </div>
                     
-                    <!-- REMAINS: 2025 - Norway Production Dashboard - In progress (Amber) -->
                     <div class="flex justify-between items-center text-lg pb-2">
                         <span class="text-text-dark font-medium">2025 - Norway Production Dashboard</span>
                         <span class="text-amber-600 font-extrabold">2 M USD - In progress</span>
                     </div>
+                </div>
+            </div>
+            
+            <!-- NEW: List of Projects Delivered -->
+            <div>
+                <h3 class="text-2xl font-bold text-text-dark mb-6 border-l-4 border-secondary-highlight pl-3">List of Projects Delivered</h3>
+                
+                <h4 class="text-xl font-bold text-primary-accent mb-3">Qatar Projects (2019-2023)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-8">
+                    <p class="text-base text-text-dark">MTO dashboard – Qatar 2019</p>
+                    <p class="text-base text-text-dark">MTO Data Quality dashboard – Qatar 2020</p>
+                    <p class="text-base text-text-dark">Unplanned downtime dashboard – Qatar 2020</p>
+                    <p class="text-base text-text-dark">RPI (Report prioritize and investigate) dashboard and tool – Qatar - 2021</p>
+                    <p class="text-base text-text-dark">WPIP (Work Process Improvement Plan) dashboard and tool – Qatar - 2021</p>
+                    <p class="text-base text-text-dark">Reliability Hub dashboard – Qatar - 2022</p>
+                    <p class="text-base text-text-dark">Living program dashboard – Qatar - 2021</p>
+                    <p class="text-base text-text-dark">PEC dashboard – Qatar - 2022</p>
+                    <p class="text-base text-text-dark">VRE dashboard – Qatar - 2023</p>
+                    <p class="text-base text-text-dark">React Capability report – Qatar - 2023</p>
+                    <p class="text-base text-text-dark">Turnaround S -curve dashboard – Qatar - 2022</p>
+                    <p class="text-base text-text-dark">DWR dashboard – Qatar - 2022</p>
+                    <p class="text-base text-text-dark">Qatar Digital Repository – GTL Nexus – Qatar - 2023</p>
+                    <p class="text-base text-text-dark">Global Instrument Reliability data analysis report - 2023</p>
+                </div>
+
+                <h4 class="text-xl font-bold text-primary-accent mb-3">Norway Projects (2024-2025)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                    <p class="text-base text-text-dark">MTO Refreshed dashboard – Norway - 2024</p>
+                    <p class="text-base text-text-dark">AMAT – All Action dashboard – Norway - 2024</p>
+                    <p class="text-base text-text-dark">FRR and MTO Power App – Norway - 2024</p>
+                    <p class="text-base text-text-dark">Production Dashboard (Nyhamna) – Norway - 2024</p>
+                    <p class="text-base text-text-dark">Wells Productivity Index – 21 Wells – Norway - 2025</p>
+                    <p class="text-base text-text-dark">Planned Maintenance Forecast – Norway - 2025</p>
+                    <p class="text-base text-text-dark">IPSC & LE app – Norway - 2025</p>
+                    <!-- MRU Filter bed Changeout Catalyst Prediction (from previous iteration) -->
+                    <p class="text-base text-text-dark">MRU Filter bed Changeout Catalyst Prediction – Norway - 2025</p>
+                    <p class="text-base text-text-dark">Nyhamna Asset Review dashboard – Norway - 2025</p>
+                    <p class="text-base text-text-dark">Material readiness report for Maintenance – Norway - 2025</p>
+                    <p class="text-base text-text-dark">Pressure safety valve inspection app – Norway - 2025</p>
+                    <p class="text-base text-text-dark">Reliability dashboard – Norway - 2025</p>
+                    <p class="text-base text-text-dark">Dead leg monitoring – Norway - 2025</p>
+                    <p class="text-base text-text-dark">MOC dashboard – Norway - 2025</p>
                 </div>
             </div>
 
@@ -637,12 +680,12 @@
                                 <p class="text-lg font-semibold text-text-dark mb-1">Shell, Shell Business Operations, TAO Chennai</p>
                                 <p class="text-sm text-text-muted mb-4 font-mono">Jul 2019 – Present (5+ Years)</p>
 
-                                <!-- NEW: Project Impact Button -->
+                                <!-- MODIFIED: Button text change -->
                                 <button onclick="openModal()" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-base font-bold rounded-xl shadow-md text-surface bg-primary-accent hover:bg-cyan-600 transition duration-300 mb-4 focus:outline-none focus:ring-4 focus:ring-primary-accent/50">
                                     <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c.84.84 1.5 2 1.5 3.5 0 2.86-2.01 5.16-4.5 5.25V21h-2v-2.25c-2.49-.09-4.5-2.39-4.5-5.25 0-1.5.66-2.66 1.5-3.5"/><path d="M12 2c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z"/></svg>
-                                    View AI & Financial Impact
+                                    Project Delivered and Impact details
                                 </button>
-                                <!-- End NEW Button -->
+                                <!-- End MODIFIED Button -->
 
                                 <!-- Performance Rating Block -->
                                 <div class="mt-4 mb-4 p-4 bg-primary-accent/10 rounded-xl border border-primary-accent/30">
@@ -663,7 +706,8 @@
                                     <li>Expert in <strong>Maintenance & Reliability Data Analysis</strong> and <strong>Digital Transformation</strong>, delivering innovative solutions to optimize asset performance and streamline workflows.</li>
                                     <li>Demonstrated mastery of the <strong>Microsoft Power Platform</strong> (Power BI, Power Apps, and Power Automate) to build scalable, user-friendly applications and automate complex processes.</li>
                                     <li>Advanced proficiency in <strong>Python, Azure Machine Learning, Databricks, and Git</strong>, enabling the development of robust data engineering pipelines and predictive analytics models.</li>
-                                    <li>Served as a <strong>DIY Coach</strong> for TAO, Chennai and Pearl GTL, Qatar for 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools.</li>
+                                    <!-- MODIFIED: Added TAS (Technical Asset Operation) -->
+                                    <li>Served as a <strong>DIY Coach</strong> for TAS (Technical Asset Operation), TAO, Chennai and Pearl GTL, Qatar for 4 years, mentoring colleagues on the implementation, development, and adoption of digital tools.</li>
                                 </ul>
 
                                 <!-- Internal Secondment / Project Block -->
